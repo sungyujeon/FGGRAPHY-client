@@ -12,7 +12,7 @@ export default new Vuex.Store({
   plugins: [createPersistedState()],
   state: {
     userToken: null,
-    articles: null,
+    movies: null,
   },
   mutations: {
     SAVE_JWT: function (state, token) {
@@ -21,8 +21,8 @@ export default new Vuex.Store({
     DELETE_JWT: function (state) {
       state.userToken = null
     },
-    GET_ARTICLES: function (state, data) {
-      state.articles = data
+    GET_MOVIES: function (state, data) {
+      state.movies = data
     }
   },
   actions: {
@@ -45,23 +45,23 @@ export default new Vuex.Store({
       context.commit('DELETE_JWT')
     },
     // context안에 getters도 state도 모두 들어있다!!
-    // getArticles: function (context) {
-    //   console.log(context)
-    //   axios({
-    //     method: 'get',
-    //     url: `${SERVER_URL}/api/v1/articles/`,
-    //     headers: {
-    //       Authorization: `JWT ${context.state.userToken}`
-    //     }
-    //   })
-    //     .then((res)=>{
-    //       console.log(res)
-    //       context.commit('GET_ARTICLES', res.data)
-    //     })
-    //     .catch((err)=>{
-    //       console.log(err)
-    //     })
-    // }
+    getMovies: function (context) {
+      console.log(context)
+      axios({
+        method: 'get',
+        url: `${SERVER_URL}/api/v1/movies/`,
+        headers: {
+          Authorization: `JWT ${context.state.userToken}`
+        }
+      })
+        .then((res)=>{
+          console.log(res)
+          context.commit('GET_MOVIES', res.data)
+        })
+        .catch((err)=>{
+          console.log(err)
+        })
+    }
   },
   // getters의 첫 인자는 state
   getters: {

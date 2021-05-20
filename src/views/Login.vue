@@ -5,8 +5,9 @@
     <p>PW</p>
     <input type="password" v-model="credential.password">
     <p></p>
-    <button @click="getJWT">login</button>
+    <button @click="getJWT">login</button>    
   </div>
+  
 </template>
 
 <script>

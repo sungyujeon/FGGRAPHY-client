@@ -1,23 +1,25 @@
 <template>
-  <div class="home">    
-    <!-- <h5 v-for="article in this.$store.state.articles" :key="article.id">
-      {{ article.title }}
-      <router-link :to="{name: 'Detail', params: {id: article.id}}">
-        {{article.id}}번글보기
-      </router-link>
-    </h5> -->
-  </div>
+  <div class="container home">
+      <div class="row">
+        <div class="col-9 border">
+          <HomeLeft/>
+        </div>
+        <div class="col-3 border">
+          <HomeRight/>
+        </div>
+      </div>
+    </div>
 </template>
 
 <script>
-// @ is an alias to /src
+import HomeLeft from '@/components/HomeLeft.vue'
+import HomeRight from '@/components/HomeRight.vue'
 
 export default {
   name: 'Home',
   components: {
-  },
-  // created: function () {
-  //   this.$store.dispatch('getArticles')
-  // }
+    HomeLeft,
+    HomeRight
+  }
 }
 </script>
