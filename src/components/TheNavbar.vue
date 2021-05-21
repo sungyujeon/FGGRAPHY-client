@@ -19,7 +19,7 @@
           <!-- getters에서 if-else로 분기처리 한 이유가 여기에 있다. -->
           <!-- 로그인을 했다면 디코드한 정보가 들어있고, 안했다면 null이므로 else로 간다. -->
           <div v-if="this.$store.getters.decodedToken" class="d-flex">
-            <p>{{ this.$store.getters.decodedToken.username }}님 반갑습니다!</p>
+            <p><router-link :to="{ name: 'Profile', params: {username: this.$store.getters.decodedToken.username} }">{{ this.$store.getters.decodedToken.username }}님</router-link>반갑습니다!</p>             
             <li class="nav-item">
               <!-- .native를 넣는 이유: 안넣으면 기본적으로 a태그가 실행되므로 그걸 막기위해서 -->
               <router-link @click.native="deleteJWT" to="#">Logout</router-link>

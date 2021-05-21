@@ -13,6 +13,7 @@ export default new Vuex.Store({
   state: {
     userToken: null,
     movies: null,
+    genres: Array.from(Array(19), (e, i) => i+1)
   },
   mutations: {
     SAVE_JWT: function (state, token) {
@@ -55,8 +56,13 @@ export default new Vuex.Store({
         }
       })
         .then((res)=>{
-          console.log(res)
-          context.commit('GET_MOVIES', res.data)
+          console.log(res)          
+          const result = res.data.filter(element => {
+            console.log(element.poster_path)
+            return element.poster_path
+          });
+          console.log(result)
+          context.commit('GET_MOVIES', result)
         })
         .catch((err)=>{
           console.log(err)
@@ -73,6 +79,25 @@ export default new Vuex.Store({
       } else {
         return null
       }
+    },
+    getGenreGroups: function (state) {      
+      const genreGroups = []
+      let cnt = 0
+      let genreGroup = []
+      for (let genre of state.genres) {
+        genreGroup.push(genre)
+        cnt += 1
+        if (cnt == 4) {
+          genreGroups.push(genreGroup)
+          genreGroup = []
+          cnt = 0
+        }
+      }
+      // genreGroup은 마지막 4개 들어있는 배열
+      genreGroups.push(genreGroup)
+      
+      return genreGroups
+      
     }
   },
   modules: {

@@ -1,25 +1,34 @@
 <template>
   <div class="container">
-    <div class="row row-cols-1 row-cols-md-6 g-1">     
+    <VueSlickCarousel :arrows="true" :dots="true">
       <ranking-genres
-        v-for="movie in $store.state.movies"
-        :key="movie.id"
-        :movie="movie"
-      />        
-    </div>
+      v-for="(genre_group, idx) in getGenreGroups"
+      :key="idx"
+      :genreGroup="genre_group"
+      >
+      </ranking-genres> 
+    </VueSlickCarousel>   
   </div>
 </template>
 
 <script>
 import RankingGenres from '@/components/RankingGenres.vue'
+import VueSlickCarousel from 'vue-slick-carousel'
+import 'vue-slick-carousel/dist/vue-slick-carousel.css'
+// optional style for arrows & dots
+import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'Ranking',
   components: {
     RankingGenres,
-  },
-  created: function () {
-    this.$store.dispatch('getMovies')
+    VueSlickCarousel,   
+  },    
+  computed: {
+    ...mapGetters([
+      'getGenreGroups'
+    ])
   }
 }
 </script>
