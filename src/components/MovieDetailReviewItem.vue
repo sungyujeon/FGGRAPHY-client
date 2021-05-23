@@ -10,7 +10,8 @@
     <div class="ms-2 mb-2" style="text-align: left">  
       <font-awesome-icon :icon="['fas','thumbs-up']" class="me-1 cursor-on" @click="clickLikeBtn(review)" v-if="isLiked"/>  
       <font-awesome-icon :icon="['far','thumbs-up']" class="me-1 cursor-on" @click="clickLikeBtn(review)" v-else/><span>{{ like_users_count }}</span>        
-      <font-awesome-icon :icon="['far','comment-dots']" class="ms-2 me-1"/>[댓글갯수]
+      <font-awesome-icon :icon="['fas','comment-dots']" class="ms-2 me-1" v-if="isComment"/>
+      <font-awesome-icon :icon="['far','comment-dots']" class="ms-2 me-1" v-else/>{{ comment_count }}
     </div>
   </div>
 </template>
@@ -26,6 +27,8 @@ export default {
     return {
       isLiked: false,
       like_users_count: 0,
+      isComment: false,
+      comment_count: 0,
     }
   },
   props: {
@@ -40,6 +43,25 @@ export default {
     if (this.$props.review.like_users_count !== 0) {
       this.like_users_count = this.$props.review.like_users_count
     }
+
+    axios({      
+      method: 'get',
+      url: `${SERVER_URL}/api/v1/movies/reviews/${this.$props.review.id}/comments/`,
+      headers: {
+        Authorization: `JWT ${this.$store.state.userToken}`
+      }
+    })
+      .then((res)=>{
+        console.log(res.data)
+        this.comment_count = res.data.length   
+        
+        res.data.forEach(element => {
+          if (element.user === user) {
+            this.isComment = true
+          }
+        });
+        
+      })    
   },
   methods: {
     clickLikeBtn: function (review) {
