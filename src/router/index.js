@@ -9,6 +9,7 @@ import Recommendation from '@/views/Recommendation.vue'
 import MovieDetail from '@/views/MovieDetail.vue'
 import Profile from '@/views/Profile.vue'
 import ReviewDetail from '@/views/ReviewDetail.vue'
+import MovieTrailer from '@/views/MovieTrailer.vue'
 
 Vue.use(VueRouter)
 
@@ -58,7 +59,12 @@ const routes = [
     path: '/movies/:movie_id/reviews/:review_id',
     name: 'ReviewDetail',
     component: ReviewDetail
-  }
+  },
+  {
+    path: '/movies/:movie_id/trailer/',
+    name: 'MovieTrailer',
+    component: MovieTrailer,
+  },
 ]
 
 const router = new VueRouter({

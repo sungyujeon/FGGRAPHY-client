@@ -10,7 +10,7 @@
           <h5 class="mt-3">{{ movie.title }} | {{ movie.vote_average }}</h5>
           <p class="mt-3 px-5 no-overflow">{{ movie.overview }}</p>                    
         </div>
-        <MovieReviewCreate class="mb-3"/>        
+        <MovieReviewCreate class="mb-3" :movie="movie"/>        
       </div>      
     </div>      
   </div>

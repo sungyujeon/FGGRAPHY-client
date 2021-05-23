@@ -4,7 +4,7 @@
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reviewCreateModal">
       <span>리뷰작성하기</span>           
     </button>
-    <button type="button" class="btn btn-danger ms-5" data-bs-toggle="modal" data-bs-target="#trailerModal">예고편 보기</button> 
+    <router-link :to="{ name: 'MovieTrailer', params: {id: this.movie.id} }" class="btn btn-danger ms-5">예고편 보기</router-link>
 
     <!-- Modal -->
     <div class="modal fade" id="reviewCreateModal" tabindex="-1" aria-labelledby="reviewCreateModalLabel" aria-hidden="true">
@@ -25,26 +25,6 @@
         </div>
       </div>
     </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="trailerModal" tabindex="-1" aria-labelledby="trailerModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div style="height: 500px;"></div>
-          <!-- <div class="modal-header">
-            <h5 class="modal-title" id="trailerModalLabel">youtube 예고편</h5>            
-          </div>
-          <div class="modal-body">
-            <textarea name="reviewInput" id="reviewInput" cols="60" rows="15" v-model="reviewInput"></textarea>
-            <h5>[별점선택]</h5>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-            <button @click="createReview" class="btn btn-primary">작성</button>
-          </div> -->
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -55,6 +35,9 @@ const SERVER_URL = process.env.VUE_APP_SERVER_URL
 
 export default {
   name: 'MovieReviewCreate',
+  props: {
+    movie: Object,
+  },
   data: function () {
     return {
       reviewInput: null
@@ -89,5 +72,9 @@ export default {
 </script>
 
 <style>
-
+  .trailer-modal {
+    margin: 0;
+    max-height: 968px;
+    max-width: 968px;
+  }
 </style>
