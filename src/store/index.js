@@ -12,7 +12,8 @@ export default new Vuex.Store({
   plugins: [createPersistedState()],
   state: {
     userToken: null,
-    articles: null,
+    movies: null,
+    genres: Array.from(Array(19), (e, i) => i+1)
   },
   mutations: {
     SAVE_JWT: function (state, token) {
@@ -21,8 +22,8 @@ export default new Vuex.Store({
     DELETE_JWT: function (state) {
       state.userToken = null
     },
-    GET_ARTICLES: function (state, data) {
-      state.articles = data
+    GET_MOVIES: function (state, data) {
+      state.movies = data
     }
   },
   actions: {
@@ -45,23 +46,28 @@ export default new Vuex.Store({
       context.commit('DELETE_JWT')
     },
     // context안에 getters도 state도 모두 들어있다!!
-    // getArticles: function (context) {
-    //   console.log(context)
-    //   axios({
-    //     method: 'get',
-    //     url: `${SERVER_URL}/api/v1/articles/`,
-    //     headers: {
-    //       Authorization: `JWT ${context.state.userToken}`
-    //     }
-    //   })
-    //     .then((res)=>{
-    //       console.log(res)
-    //       context.commit('GET_ARTICLES', res.data)
-    //     })
-    //     .catch((err)=>{
-    //       console.log(err)
-    //     })
-    // }
+    getMovies: function (context) {
+      console.log(context)
+      axios({
+        method: 'get',
+        url: `${SERVER_URL}/api/v1/movies/`,
+        headers: {
+          Authorization: `JWT ${context.state.userToken}`
+        }
+      })
+        .then((res)=>{
+          console.log(res)          
+          const result = res.data.filter(element => {
+            console.log(element.poster_path)
+            return element.poster_path
+          });
+          console.log(result)
+          context.commit('GET_MOVIES', result)
+        })
+        .catch((err)=>{
+          console.log(err)
+        })
+    }
   },
   // getters의 첫 인자는 state
   getters: {
@@ -73,6 +79,25 @@ export default new Vuex.Store({
       } else {
         return null
       }
+    },
+    getGenreGroups: function (state) {      
+      const genreGroups = []
+      let cnt = 0
+      let genreGroup = []
+      for (let genre of state.genres) {
+        genreGroup.push(genre)
+        cnt += 1
+        if (cnt == 4) {
+          genreGroups.push(genreGroup)
+          genreGroup = []
+          cnt = 0
+        }
+      }
+      // genreGroup은 마지막 4개 들어있는 배열
+      genreGroups.push(genreGroup)
+      
+      return genreGroups
+      
     }
   },
   modules: {
