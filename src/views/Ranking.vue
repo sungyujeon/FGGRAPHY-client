@@ -25,6 +25,9 @@ export default {
     RankingGenres,
     VueSlickCarousel,   
   },    
+  created: function () {
+    this.$store.dispatch('getGenreRanking')
+  },
   computed: {
     ...mapGetters([
       'getGenreGroups'

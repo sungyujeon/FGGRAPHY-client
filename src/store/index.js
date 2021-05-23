@@ -13,7 +13,7 @@ export default new Vuex.Store({
   state: {
     userToken: null,
     movies: null,
-    genres: Array.from(Array(19), (e, i) => i+1)
+    genreRankings: null,    
   },
   mutations: {
     SAVE_JWT: function (state, token) {
@@ -24,6 +24,9 @@ export default new Vuex.Store({
     },
     GET_MOVIES: function (state, data) {
       state.movies = data
+    },
+    GET_GENRE_RANKING: function (state, data) {
+      state.genreRankings = data
     }
   },
   actions: {
@@ -46,8 +49,7 @@ export default new Vuex.Store({
       context.commit('DELETE_JWT')
     },
     // context안에 getters도 state도 모두 들어있다!!
-    getMovies: function (context) {
-      console.log(context)
+    getMovies: function (context) {      
       axios({
         method: 'get',
         url: `${SERVER_URL}/api/v1/movies/`,
@@ -67,7 +69,25 @@ export default new Vuex.Store({
         .catch((err)=>{
           console.log(err)
         })
-    }
+    },
+    getGenreRanking: function (context) {      
+      axios({
+        method: 'get',
+        url: `${SERVER_URL}/api/v1/movies/genres/top-reviewed/`,
+        headers: {
+          Authorization: `JWT ${context.state.userToken}`
+        }
+      })
+        .then((res)=>{
+          console.log(res)
+          context.commit('GET_GENRE_RANKING', res.data)
+        })
+        .catch((err)=>{
+          console.log(err)
+        })
+    },
+    
+
   },
   // getters의 첫 인자는 state
   getters: {
@@ -84,7 +104,7 @@ export default new Vuex.Store({
       const genreGroups = []
       let cnt = 0
       let genreGroup = []
-      for (let genre of state.genres) {
+      for (let genre of state.genreRankings) {
         genreGroup.push(genre)
         cnt += 1
         if (cnt == 4) {

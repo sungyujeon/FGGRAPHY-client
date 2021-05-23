@@ -11,7 +11,7 @@
     </div>
     <div>
       <label for="passwordConfirmation">비밀번호 확인: </label>
-      <input type="password" id="passwordConfirmation" v-model="credential.passwordConfirmation">
+      <input @keyup.enter="signup" type="password" id="passwordConfirmation" v-model="credential.passwordConfirmation">
     </div>
     <button @click="signup">회원가입</button>
   </div>

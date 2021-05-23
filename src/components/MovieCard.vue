@@ -1,18 +1,16 @@
-<template>
-  <div class="col">
-    <div class="card h-60">
-      <router-link :to="{ name: 'MovieDetail', params: {id: movie.id} }">
-      <img :src="posterPath" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">{{ movie.title }}</h5>
-        <!-- <p class="card-text">{{ movie.overview }}</p> -->
-      </div>
-      </router-link> 
-    </div>
-  </div>
+<template>  
+  <div id="MovieCard">        
+    <img :src="posterPath" class="card-img-top" alt="...">    
+    <router-link :to="{ name: 'MovieDetail', params: {id: this.movie.id} }">
+      <p>{{ movie.title }}</p>   
+    </router-link>
+    <p>{{ movie.vote_average }}</p> 
+  </div>  
 </template>
 
+
 <script>
+
 export default {
   name: 'MovieCard',
   data: function () {
@@ -20,9 +18,12 @@ export default {
       posterPath: `https://image.tmdb.org/t/p/original${this.movie.poster_path}`
     }
   },
+  components: {    
+    
+  },
   props: {
     movie: Object,
-  },
+  },  
 }
 </script>
 
