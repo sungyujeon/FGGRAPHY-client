@@ -48,6 +48,7 @@ export default new Vuex.Store({
     // context안에 getters도 state도 모두 들어있다!!
     getMovies: function (context) {
       console.log(context)
+      console.log(`JWT Token: ${context.state.userToken}`)
       axios({
         method: 'get',
         url: `${SERVER_URL}/api/v1/movies/`,
