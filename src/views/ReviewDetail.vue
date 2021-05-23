@@ -2,20 +2,21 @@
   <div class="container my-3" style="width: 40vw;">
     <div class="card text-center" >
       <div class="card-header">
-        {{ review }}
-        {{ comment }}
-
-        {{ review.user }}
+        {{ comments }}
+        <p>[{{ review.movie}}] : {{ review.user }}님의 review</p>        
       </div>
-      <div class="card-body">        
-        <p class="card-text">{{ review.content }}</p> 
+      <div class="card-body d-flex flex-column justify-content-between" style="height: 40vh;">
+        <div>     
+          <p class="card-text">{{ review.content }}</p> 
+        </div>   
         <div style="text-align: left;"> 
-          <font-awesome-icon :icon="['fas','thumbs-up']" class="me-1 cursor-on" @click="clickLikeBtn(this.review)" v-if="isLiked"/>  
-          <font-awesome-icon :icon="['far','thumbs-up']" class="me-1 cursor-on" @click="clickLikeBtn(this.review)" v-else/>       
-          <font-awesome-icon :icon="['far','comment-dots']" class="ms-2 me-1"/><span>댓글달기</span>   
+          <font-awesome-icon :icon="['fas','thumbs-up']" class="me-1 cursor-on" @click="clickLikeBtn(this.review)" />  
+          <font-awesome-icon :icon="['far','thumbs-up']" class="me-1 cursor-on" @click="clickLikeBtn(this.review)" />       
+          <font-awesome-icon :icon="['far','comment-dots']" class="ms-2 me-1"/><span>[댓글갯수]</span>   
         </div>   
       </div>
-      <div class="card-footer text-muted">        
+      <div class="card-footer text-muted" v-for="comment in this.comments" :key="comment.id"> 
+        <p>{{ comment.user }} : {{ comment.content }}</p>       
       </div>
     </div>
   </div>
@@ -31,9 +32,7 @@ export default {
   data: function () {
     return {
       review: null,
-      comment: null,    
-      isLiked: false,
-      like_users_count: 0,  
+      comments: null,            
     }
   },
   created: function (){
@@ -56,16 +55,9 @@ export default {
       }
     })
       .then((res)=>{
-        this.comment = res.data
+        this.comments = res.data
       })
-  },
-  // computed: {
-  //   isLike: function () {
-  //     const isLike = false
-  //     if (this.review.like_users.includes(this.$store.getters.decodedToken.username))
-  //     return 0
-  //   }
-  // },
+  },  
   methods: {
     clickLikeBtn: function (review) {
       axios({
@@ -80,12 +72,12 @@ export default {
           console.log(res.data.like_status)   
           
           if (res.data.like_status) {
-            this.isLiked = true
-            this.like_users_count++
+            // this.isLiked = true
+            // this.like_users_count++
           }
           else { 
-            this.isLiked = false
-            this.like_users_count--
+            // this.isLiked = false
+            // this.like_users_count--
           }
         })
     }
