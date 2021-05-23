@@ -3,7 +3,7 @@
     <p>ID</p>
     <input type="text" v-model="credential.username">
     <p>PW</p>
-    <input type="password" v-model="credential.password">
+    <input @keyup.enter="getJWT" type="password" v-model="credential.password">
     <p></p>
     <button @click="getJWT">login</button>    
   </div>

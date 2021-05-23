@@ -8,6 +8,7 @@ import Ranking from '@/views/Ranking.vue'
 import Recommendation from '@/views/Recommendation.vue'
 import MovieDetail from '@/views/MovieDetail.vue'
 import Profile from '@/views/Profile.vue'
+import ReviewDetail from '@/views/ReviewDetail.vue'
 
 Vue.use(VueRouter)
 
@@ -53,6 +54,11 @@ const routes = [
     name: 'Profile',
     component: Profile
   },
+  {
+    path: '/movies/:movie_id/reviews/:review_id',
+    name: 'ReviewDetail',
+    component: ReviewDetail
+  }
 ]
 
 const router = new VueRouter({
