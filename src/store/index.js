@@ -13,7 +13,8 @@ export default new Vuex.Store({
   state: {
     userToken: null,
     movies: null,
-    genreRankings: null,    
+    genreRankings: null,
+    searchMovies: [],
   },
   mutations: {
     SAVE_JWT: function (state, token) {
@@ -27,7 +28,10 @@ export default new Vuex.Store({
     },
     GET_GENRE_RANKING: function (state, data) {
       state.genreRankings = data
-    }
+    },
+    ON_SEARCH: function (state, tmpSearchMovies) {
+      state.searchMovies= tmpSearchMovies
+    },
   },
   actions: {
     getJWT: function (context, credential) {
@@ -83,6 +87,20 @@ export default new Vuex.Store({
           console.log(err)
         })
     },
+    onSearch: function (context, searchInput) {
+      axios({
+        method: 'get',
+        url: `${SERVER_URL}/api/v1/movies/search/${searchInput}`,
+        headers: {
+          Authorization: `JWT ${context.state.userToken}`
+        }
+      })
+        .then((res) => {
+          const tmpSearchMovies = res.data
+          console.log(res.data)
+          context.commit('ON_SEARCH', tmpSearchMovies)
+        })
+    }
     
 
   },

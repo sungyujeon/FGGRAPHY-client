@@ -10,6 +10,7 @@ import MovieDetail from '@/views/MovieDetail.vue'
 import Profile from '@/views/Profile.vue'
 import ReviewDetail from '@/views/ReviewDetail.vue'
 import MovieTrailer from '@/views/MovieTrailer.vue'
+import SearchMovie from '@/views/SearchMovie.vue'
 
 Vue.use(VueRouter)
 
@@ -51,11 +52,6 @@ const routes = [
     component: MovieDetail
   },
   {
-    path: '/:username',
-    name: 'Profile',
-    component: Profile
-  },
-  {
     path: '/movies/:movie_id/reviews/:review_id',
     name: 'ReviewDetail',
     component: ReviewDetail
@@ -64,6 +60,16 @@ const routes = [
     path: '/movies/:movie_id/trailer/',
     name: 'MovieTrailer',
     component: MovieTrailer,
+  },
+  {
+    path: '/search',
+    name: 'SearchMovie',
+    component: SearchMovie,
+  },
+  {
+    path: '/:username',
+    name: 'Profile',
+    component: Profile
   },
 ]
 
