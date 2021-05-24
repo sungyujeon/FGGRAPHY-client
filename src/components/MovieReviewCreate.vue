@@ -44,7 +44,6 @@ export default {
   },
   methods: {
     createReview: function () {
-      console.log(this.reviewInput)
       axios({
         method: 'post',
         url: `${SERVER_URL}/api/v1/movies/${this.$route.params.id}/reviews/`,
@@ -55,8 +54,7 @@ export default {
           content: this.reviewInput
         }
       })
-        .then((res)=>{
-          console.log(res.data)
+        .then(()=>{
           // 모달로 작성한 페이지이기 때문에 현재 페이지로 push를 하게되면 navigation duplicated에러가 발생한다.
           // 즉, 내가 현재 있는 페이지에서 같은 현재 페이지로 push는 불가능
           // 그렇기 때문에 아래와 같이 작성해주어야 원하는대로 동작한다(새로고침과 같은기능)

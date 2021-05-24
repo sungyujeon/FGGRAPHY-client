@@ -31,7 +31,6 @@ export default {
   created: function () {
     const get_youtubes = function (title, videos) {
       let tmp_videos = videos
-      console.log(title)
       const params = {
         key: API_KEY,
         part: 'snippet',
@@ -46,8 +45,6 @@ export default {
       })
         .then((res) => {
           tmp_videos = res.data.items
-          console.log(tmp_videos)
-          console.log(tmp_videos[0].snippet.title)
           exec(tmp_videos)
         })
         .catch((err) => {
@@ -64,7 +61,6 @@ export default {
     })
       .then((res) => {
         this.title = res.data.title + ' trailer'
-        console.log(this.title)
         get_youtubes(this.title, this.videos)
       })
       .catch((err) => {
