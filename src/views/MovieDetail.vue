@@ -26,7 +26,8 @@ export default {
   data: function () {
     return {
       movie: null,
-      reviews: [],   
+      reviews: [],  
+      comments: [], 
       pageNum: 1, 
       bottomCheckFlag: false, 
       infinityListEndFlag: false,
@@ -52,7 +53,7 @@ export default {
             this.infinityListEndFlag = true            
           }
         })
-    },
+    },    
     checkBottom: function () {      
       const {scrollTop, clientHeight, scrollHeight} = document.documentElement            
       if (((scrollHeight - (scrollTop + clientHeight)) < 5) && !this.bottomCheckFlag && !this.infinityListEndFlag) {

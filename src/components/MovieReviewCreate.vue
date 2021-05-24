@@ -15,8 +15,7 @@
             <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
           </div>
           <div class="modal-body">
-            <textarea name="reviewInput" id="reviewInput" cols="60" rows="15" v-model="reviewInput"></textarea>
-            <h5>[별점선택]</h5>
+            <textarea name="reviewInput" id="reviewInput" cols="60" rows="15" v-model="reviewInput"></textarea>            
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>

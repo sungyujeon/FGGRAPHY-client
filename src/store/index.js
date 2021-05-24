@@ -57,13 +57,11 @@ export default new Vuex.Store({
           Authorization: `JWT ${context.state.userToken}`
         }
       })
-        .then((res)=>{
-          console.log(res)          
-          const result = res.data.filter(element => {
-            console.log(element.poster_path)
+        .then((res)=>{            
+          
+          const result = res.data.filter(element => {            
             return element.poster_path
-          });
-          console.log(result)
+          });          
           context.commit('GET_MOVIES', result)
         })
         .catch((err)=>{
@@ -78,8 +76,7 @@ export default new Vuex.Store({
           Authorization: `JWT ${context.state.userToken}`
         }
       })
-        .then((res)=>{
-          console.log(res)
+        .then((res)=>{          
           context.commit('GET_GENRE_RANKING', res.data)
         })
         .catch((err)=>{
@@ -105,7 +102,7 @@ export default new Vuex.Store({
       let cnt = 0
       let genreGroup = []
       for (let genre of state.genreRankings) {
-        genreGroup.push(genre)
+        genreGroup.push(genre) 
         cnt += 1
         if (cnt == 4) {
           genreGroups.push(genreGroup)

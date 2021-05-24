@@ -1,22 +1,26 @@
 <template>
-  <div class="container my-3" style="width: 40vw;">
+  <div class="container my-3" style="width: 40vw;" v-if="review !== null">
     <div class="card text-center" >
       <div class="card-header">
-        {{ comments }}
-        <p>[{{ review.movie}}] : {{ review.user }}님의 review</p>        
+        {{ review }}
+        <!-- {{ comments }} -->
+        <p>[{{ review.movie }}] : {{ review.user }}님의 review</p>
+              
       </div>
       <div class="card-body d-flex flex-column justify-content-between" style="height: 40vh;">
         <div>     
           <p class="card-text">{{ review.content }}</p> 
         </div>   
         <div style="text-align: left;"> 
-          <font-awesome-icon :icon="['fas','thumbs-up']" class="me-1 cursor-on" @click="clickLikeBtn(this.review)" />  
-          <font-awesome-icon :icon="['far','thumbs-up']" class="me-1 cursor-on" @click="clickLikeBtn(this.review)" />       
-          <font-awesome-icon :icon="['far','comment-dots']" class="ms-2 me-1"/><span>[댓글갯수]</span>   
+          <font-awesome-icon :icon="['fas','thumbs-up']" class="me-1 cursor-on" @click="clickLikeBtn(review)" v-if="isLiked"/>  
+          <font-awesome-icon :icon="['far','thumbs-up']" class="me-1 cursor-on" @click="clickLikeBtn(review)" v-else/><span>{{ like_users_count }}</span>       
+          <font-awesome-icon :icon="['fas','comment-dots']" class="ms-2 me-1" v-if="isCommented"/>
+          <font-awesome-icon :icon="['far','comment-dots']" class="ms-2 me-1" v-else/><span>{{ comment_count}}</span>   
         </div>   
       </div>
       <div class="card-footer text-muted" v-for="comment in this.comments" :key="comment.id"> 
-        <p>{{ comment.user }} : {{ comment.content }}</p>       
+        <p>{{ comment.user }} : {{ comment.content }}</p>
+                 
       </div>
     </div>
   </div>
@@ -32,6 +36,10 @@ export default {
   data: function () {
     return {
       review: null,
+      isLiked: false,
+      like_users_count: 0,
+      isCommented: false,
+      comment_count: 0,
       comments: null,            
     }
   },
@@ -44,7 +52,11 @@ export default {
       }
     })
       .then((res)=>{
-        this.review = res.data
+        this.review = res.data                
+        if (res.data.like_users.includes(this.$store.getters.decodedToken.user_id)) {
+          this.isLiked = true
+        }
+        this.like_users_count = res.data.like_users_count
       })
 
     axios({
@@ -56,6 +68,14 @@ export default {
     })
       .then((res)=>{
         this.comments = res.data
+        this.comment_count = res.data.length
+
+        res.data.forEach(element => {
+          if (element.user === this.$store.getters.decodedToken.user_id) {
+            this.isCommented = true
+          }
+        });
+        
       })
   },  
   methods: {
