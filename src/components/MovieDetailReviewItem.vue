@@ -51,7 +51,6 @@ export default {
       }
     })
       .then((res)=>{
-        console.log(res.data)
         this.comment_count = res.data.length   
         
         res.data.forEach(element => {
@@ -72,9 +71,6 @@ export default {
         }
       })
         .then((res)=>{
-          console.log(`${review.id}에 좋아요 눌렀어요`)          
-          console.log(res.data.like_status)   
-          
           if (res.data.like_status) {
             this.isLiked = true
             this.like_users_count++

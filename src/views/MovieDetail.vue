@@ -44,19 +44,20 @@ export default {
       })
         .then((res)=>{
           if (res.data.length === 9) {
-            console.log(res)
             this.bottomCheckFlag = false
             this.reviews.push(...res.data)
-            this.pageNum += 1
+            this.pageNum += 1           
           } else {
             this.reviews.push(...res.data)
-            this.infinityListEndFlag = true            
+            this.infinityListEndFlag = true         
           }
         })
+
+      
     },    
     checkBottom: function () {      
       const {scrollTop, clientHeight, scrollHeight} = document.documentElement            
-      if (((scrollHeight - (scrollTop + clientHeight)) < 5) && !this.bottomCheckFlag && !this.infinityListEndFlag) {
+      if (((scrollHeight - (scrollTop + clientHeight)) < 5) && !this.bottomCheckFlag && !this.infinityListEndFlag) {        
         this.getReviewsInfinity()
         this.bottomCheckFlag = true
       }
