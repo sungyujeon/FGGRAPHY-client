@@ -97,7 +97,6 @@ export default new Vuex.Store({
       })
         .then((res) => {
           const tmpSearchMovies = res.data
-          console.log(res.data)
           context.commit('ON_SEARCH', tmpSearchMovies)
         })
     }
