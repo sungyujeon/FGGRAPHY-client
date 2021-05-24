@@ -1,10 +1,11 @@
 <template>  
   <div id="MovieCard" >        
-    <img :src="posterPath" class="card-img-top" alt="..." style="width: 22vh; height: 33vh;">    
-    <router-link :to="{ name: 'MovieDetail', params: {id: this.movie.id} }">            
-      <p>{{ movie.title }}</p>   
+    <router-link :to="{ name: 'MovieDetail', params: {id: this.movie.id} }" class="card-movie-title">
+      <img :src="posterPath" class="card-img-top" alt="..." style="width: 27vh; height: 35vh;">                   
+      <p style="text-align: left;" class="card-movie-description mt-1">{{ movie.title }}</p>   
     </router-link>
-    <p>{{ movie.rating_average }}</p> 
+    <p style="text-align: left; font-size: 12px;" class="card-movie-description">개봉년도: {{ movie.release_date.substring(0,4) }} | 런타임: {{ movie.runtime }}분</p>
+    <p style="text-align: left; font-size: 12px;" class="card-movie-description">평균★{{ movie.rating_average }}</p> 
   </div>  
 </template>
 
@@ -25,5 +26,13 @@ export default {
 </script>
 
 <style>
+  .card-movie-title {
+    text-decoration: none;
+    color: black;
+  }
 
+  .card-movie-description {
+    margin-left: 35px;
+    margin-bottom: 0px;
+  }
 </style>

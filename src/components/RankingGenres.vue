@@ -6,12 +6,13 @@
         :key="idx" 
         class="col-6 col-md-3 d-flex justify-content-center"     
       >        
-        <div class="card my-2" style="height: 50vh;">
-          <img src="./static/eks1.jpg" class="card-img-top" alt="..." style="height: 30vh;">
+        <div class="card my-5" style="height: 55vh;">
+          <font-awesome-icon :icon="['fas','cog']" class="me-1 cursor-on oneBtn"/>  
+          <img src="./static/eks1.jpg" class="card-img-top" alt="..." style="height: 41vh;">
           <div class="card-body">
             <h5 class="card-title">{{ genre.name }}</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <p class="card-text">[해당 장르의 1등 아이디 출력]</p>
+            <a href="#" class="btn btn-primary">[Go [장르]]</a>
           </div>
         </div>
       </div>    
@@ -23,12 +24,7 @@
 
 <script>
 export default {
-  name: 'RankingGenres',  
-  data: function () {
-    return {
-       
-    }  
-  },
+  name: 'RankingGenres',    
   props: {
     genreGroup: Array   
   },  
@@ -36,5 +32,13 @@ export default {
 </script>
 
 <style>
+  .cursor-on {
+    cursor: pointer;
+  }
 
+  .oneBtn {
+    position: absolute;
+    margin-left: 92%;
+    margin-top: 2%; 
+  }
 </style>

@@ -76,6 +76,7 @@ export default {
     onSearch: function (event) {
       event.preventDefault()
       this.$store.dispatch('onSearch', this.searchInput)
+      this.searchInput = ''
       this.$router.push({ name: 'SearchMovie' })
     },
   },

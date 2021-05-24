@@ -1,30 +1,58 @@
 <template>
   <div class="container my-3" style="width: 50vw;" v-if="review !== null">
     <div class="card" style="text-align: left;" >
-      <div class="card-header d-flex justify-content-between">        
+      <div class="card-header d-flex justify-content-between">                
         <div class="mb-0">[{{ review.movie }}] : {{ review.user }}님의 review</div>
-        <div>
-          <font-awesome-icon :icon="['fas','pencil-alt']" class="me-1 cursor-on" @click="clickEditBtn(review)"/><span class="cursor-on">수정</span> |
+        <div v-if="review.user === this.$store.getters.decodedToken.username">        
+          <font-awesome-icon :icon="['fas','pencil-alt']" class="me-1 cursor-on" @click="clickEditBtn(review)"/><span class="cursor-on" @click="clickEditBtn(review)">수정</span> |
           <font-awesome-icon :icon="['fas','trash-alt']" class="me-1 cursor-on" data-bs-toggle="modal" data-bs-target="#deleteModal"/><span class="cursor-on" data-bs-toggle="modal" data-bs-target="#deleteModal">삭제</span>
         </div> 
       </div>
       <div class="card-body d-flex flex-column justify-content-between" style="height: 40vh;">
         <div>     
-          <div>
+          <div v-if="isUpdate">
             <p class="card-text">{{ review.content }}</p> 
           </div>
-          <textarea name="reviewInput" id="" cols="45" rows="15" style="width: 45vw;" v-model="reviewInput"></textarea>
-          <button>수정</button>
+          <div v-else>
+            <textarea name="reviewInput" id="" cols="45" rows="12" style="width: 100%" v-model="reviewInput"></textarea>
+            <button style="float: right;" @click="clickEditCompleteBtn(review)">수정</button>
+          </div>
         </div>   
-        <div style="text-align: left;"> 
-          <font-awesome-icon :icon="['fas','thumbs-up']" class="me-1 cursor-on" @click="clickLikeBtn(review)" v-if="isLiked"/>  
-          <font-awesome-icon :icon="['far','thumbs-up']" class="me-1 cursor-on" @click="clickLikeBtn(review)" v-else/><span>{{ like_users_count }}</span>       
-          <font-awesome-icon :icon="['fas','comment-dots']" class="ms-2 me-1" v-if="isCommented"/>
-          <font-awesome-icon :icon="['far','comment-dots']" class="ms-2 me-1" v-else/><span>{{ comment_count }}</span>   
+        <div class="d-flex justify-content-between" >
+          <div>
+            <font-awesome-icon :icon="['fas','thumbs-up']" class="me-1 cursor-on" @click="clickLikeBtn(review)" v-if="isLiked"/>  
+            <font-awesome-icon :icon="['far','thumbs-up']" class="me-1 cursor-on" @click="clickLikeBtn(review)" v-else/><span>{{ like_users_count }}</span>       
+            <font-awesome-icon :icon="['fas','comment-dots']" class="ms-2 me-1" v-if="isCommented"/>
+            <font-awesome-icon :icon="['far','comment-dots']" class="ms-2 me-1" v-else/><span>{{ comment_count }}</span>  
+          </div>
+          <div>
+            <font-awesome-icon :icon="['fas','pen-square']" class="me-1 cursor-on" v-if="!isNoComment" @click="isClickCommentCreateBtn"/><span v-if="!isNoComment" class="cursor-on" style="float: right;" @click="isClickCommentCreateBtn">댓글작성</span>   
+          </div>        
         </div>   
       </div>
-      <div class="card-footer text-muted" v-for="comment in this.comments" :key="comment.id"> 
-        <p>{{ comment.user }} : {{ comment.content }}</p>                
+      <div class="card-footer" v-if="isNoComment">
+        <p>아직 작성된 댓글이 없어요! <span class="cursor-on" style="color: skyblue;" @click="clickCreateCommentBtn">첫 댓글</span>을 작성해보세요!</p>
+        <div v-if="isFirstCommentClick">
+          {{this.$store.getters.decodedToken.username}} : <textarea name="" id="" cols="60" rows="5" style="width: 100%" v-model="commentInput"></textarea>
+          <div style="float: right;">
+            <span class="cursor-on" @click="clickCreateCommentCompleteBtn(review)">작성</span> |        
+            <span class="cursor-on" @click="clickCreateCommentCancleBtn()">취소</span>
+          </div>
+        </div>
+      </div>      
+      <div class="card-footer text-muted" v-else>
+        <div v-if="isClickCommentCreate">
+          {{this.$store.getters.decodedToken.username}} : <textarea name="" id="" cols="60" rows="5" style="width: 100%" v-model="commentInput"></textarea>
+          <div style="float: right;">
+            <span class="cursor-on" @click="clickCreateCommentCompleteBtn(review)">작성</span> |        
+            <span class="cursor-on" @click="clickCreateCommentCancleBtn()">취소</span>
+          </div>
+          <br>
+          <br>
+          <hr>                   
+        </div>
+          <comment-detail v-for="comment in this.comments" :key="comment.id" :comment="comment">
+          </comment-detail>
       </div>      
 
       <!-- deleteModal -->
@@ -48,10 +76,12 @@
 
 <script>
 import axios from 'axios'
+import CommentDetail from '../components/CommentDetail.vue'
 
 const SERVER_URL = process.env.VUE_APP_SERVER_URL
 
 export default {
+  components: { CommentDetail },
   name: 'ReviewDetail',
   data: function () {
     return {
@@ -61,7 +91,12 @@ export default {
       like_users_count: 0,
       isCommented: false,
       comment_count: 0,
-      comments: null,            
+      comments: null,
+      isUpdate: true, 
+      isNoComment: true,
+      isFirstCommentClick: false,
+      isClickCommentCreate: false, 
+      commentInput: '',          
     }
   },
   created: function (){
@@ -90,6 +125,10 @@ export default {
       .then((res)=>{
         this.comments = res.data
         this.comment_count = res.data.length
+
+        if (this.comment_count !== 0) {
+          this.isNoComment = false
+        }
 
         res.data.forEach(element => {
           if (element.user === this.$store.getters.decodedToken.user_id) {
@@ -133,21 +172,64 @@ export default {
         })
     },
     clickEditBtn: function (review) {
-      this.reviewInput = review.content
-      // axios({
-      //   method: 'put',
-      //   url: `${SERVER_URL}/api/v1/movies/reviews/${review.id}/`,
-      //   headers: {
-      //     Authorization: `JWT ${this.$store.state.userToken}`
-      //   },
-      //   data: {content: this.reviewInput}
-      // })
-      //   .then(()=>{     
-      //     this.$router.push({name: 'MovieDetail', params: {id: review.movie}})
-      //     this.$router.go(this.$router.currentRoute) 
-      //   })
-    }
-
+      if (this.isUpdate) {
+        this.reviewInput = review.content,
+        this.isUpdate = false
+      } else {
+        this.isUpdate = true
+      }
+      
+    },
+    clickEditCompleteBtn: function (review) {
+      axios({
+        method: 'put',
+        url: `${SERVER_URL}/api/v1/movies/reviews/${review.id}/`,
+        headers: {
+          Authorization: `JWT ${this.$store.state.userToken}`
+        },
+        data: {content: this.reviewInput}
+      })
+        .then((res)=>{     
+          console.log(res) 
+          this.reviewInput = res.data.content
+          this.$router.go(this.$router.currentRoute)
+        })      
+    },
+    clickCreateCommentBtn: function () {
+      if (this.isFirstCommentClick) {
+        this.isFirstCommentClick = false
+      } else {
+        this.isFirstCommentClick = true
+      }      
+    },
+    clickCreateCommentCompleteBtn: function (review) {
+      axios({
+        method: 'post',
+        url: `${SERVER_URL}/api/v1/movies/reviews/${review.id}/comments/`,
+        headers: {
+          Authorization: `JWT ${this.$store.state.userToken}`
+        },
+        data: {content: this.commentInput}
+      })
+        .then((res)=>{  
+          this.isNoComment = false
+          this.comments.push(res.data.content)     
+          this.$router.go(this.$router.currentRoute)     
+        })      
+    },
+    clickCreateCommentCancleBtn: function () {
+      if (this.isClickCommentCreate) {
+        this.isClickCommentCreate = false
+      } 
+      this.commentInput = ''
+    },
+    isClickCommentCreateBtn: function () {
+      if (!this.isClickCommentCreate) {
+        this.isClickCommentCreate = true
+      } else {
+         this.isClickCommentCreate = false
+      }      
+    },    
   },
 }
 </script>

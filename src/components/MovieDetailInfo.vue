@@ -7,7 +7,7 @@
       </div>
       <div class="col-6 border d-flex flex-column justify-content-between" >
         <div>          
-          <h5 class="mt-3">{{ movie.title }} | {{ movie.rating_average }}</h5>
+          <h5 class="mt-3">{{ movie.title }} | ★{{ movie.rating_average }}</h5>
           <p class="mt-3 px-5 no-overflow">{{ movie.overview }}</p>                    
         </div>
         <MovieReviewCreate class="mb-3" :movie="movie"/>        
