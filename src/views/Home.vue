@@ -1,10 +1,11 @@
 <template>
   <div class="container home mt-4">
       <div class="row">
-        <div class="col-10 border">
-          <HomeLeft :oneMovieList="oneMovieList" :twoMovieList="twoMovieList" :threeMovieList="threeMovieList"/>
+        <div class="col-10">
+          <HomeLeft :rankers="rankers" :oneMovieList="oneMovieList" :twoMovieList="twoMovieList" :threeMovieList="threeMovieList"/>
         </div>
-        <div class="col-2 border">
+        <div class="col-2">
+          <div class="mt-5" style="font-size: 20px; font-weight: bold;">전체랭킹</div>
           <HomeRight :rankers="rankers"/>
         </div>
       </div>
