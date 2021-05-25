@@ -3,8 +3,6 @@
     <div>
       <TheNavbar/>
     </div>
-    
-    
     <router-view/>
   </div>
 </template>
@@ -16,7 +14,6 @@ export default {
   name: 'App',
   components: {
     TheNavbar,
-
   }  
 }
 </script>

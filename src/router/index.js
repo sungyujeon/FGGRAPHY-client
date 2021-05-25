@@ -11,6 +11,7 @@ import Profile from '@/views/Profile.vue'
 import ReviewDetail from '@/views/ReviewDetail.vue'
 import MovieTrailer from '@/views/MovieTrailer.vue'
 import SearchMovie from '@/views/SearchMovie.vue'
+// import RankingGenre from '@/views/'
 
 Vue.use(VueRouter)
 
