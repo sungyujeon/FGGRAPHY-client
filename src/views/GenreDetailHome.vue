@@ -5,7 +5,7 @@
         <GenreDetailHomeLeft/>
       </div>
       <div class="col-2">
-        <div class="mt-5" style="font-size: 20px; font-weight: bold;">{{ this.$route.params }}랭킹</div>
+        <div class="mt-5" style="font-size: 20px; font-weight: bold;">{{ this.$route.params.genre_name }}랭킹</div>
         <GenreDetailHomeRight/>
       </div>
     </div>
