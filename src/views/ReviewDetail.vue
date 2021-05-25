@@ -20,8 +20,8 @@
         </div>   
         <div class="d-flex justify-content-between" >
           <div>
-            <font-awesome-icon :icon="['fas','thumbs-up']" class="me-1 cursor-on" @click="clickLikeBtn(review)" v-if="isLiked"/>  
-            <font-awesome-icon :icon="['far','thumbs-up']" class="me-1 cursor-on" @click="clickLikeBtn(review)" v-else/><span>{{ like_users_count }}</span>       
+            <font-awesome-icon :icon="['fas','thumbs-up']" class="me-1 cursor-on" @click="clickLikeBtn(review, $event)" v-if="isLiked"/>  
+            <font-awesome-icon :icon="['far','thumbs-up']" class="me-1 cursor-on" @click="clickLikeBtn(review, $event)" v-else/><span>{{ like_users_count }}</span>       
             <font-awesome-icon :icon="['fas','comment-dots']" class="ms-2 me-1" v-if="isCommented"/>
             <font-awesome-icon :icon="['far','comment-dots']" class="ms-2 me-1" v-else/><span>{{ comment_count }}</span>  
           </div>
@@ -77,6 +77,7 @@
 <script>
 import axios from 'axios'
 import CommentDetail from '../components/CommentDetail.vue'
+import { exec } from '@/scripts/like.js'
 
 const SERVER_URL = process.env.VUE_APP_SERVER_URL
 
@@ -139,7 +140,8 @@ export default {
       })
   },  
   methods: {
-    clickLikeBtn: function (review) {
+    clickLikeBtn: function (review, event) {
+      exec(event)
       axios({
         method: 'post',
         url: `${SERVER_URL}/api/v1/movies/${review.movie}/reviews/${review.id}/like/`,

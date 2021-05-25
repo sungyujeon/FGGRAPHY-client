@@ -10,6 +10,7 @@
           <h5 class="mt-3">{{ movie.title }} | ★{{ movie.rating_average }}</h5>
           <p class="mt-3 px-5 no-overflow">{{ movie.overview }}</p>                    
         </div>
+        <Star :movie="movie" :rating="rating"/>
         <MovieReviewCreate class="mb-3" :movie="movie"/>        
       </div>      
     </div>      
@@ -18,6 +19,7 @@
 
 <script>
 import axios from 'axios'
+import Star from '@/components/Star.vue'
 import MovieReviewCreate from '@/components/MovieReviewCreate.vue'
 
 const SERVER_URL = process.env.VUE_APP_SERVER_URL
@@ -25,15 +27,17 @@ const SERVER_URL = process.env.VUE_APP_SERVER_URL
 export default {
   name: 'MovieDetailInfo',
   components: {
-    MovieReviewCreate
+    MovieReviewCreate,
+    Star,
   },
   data: function () {
     return {
       movie: {
         poster_path: null
-      }
+      },
+      rating: 0,
     }
-  },  
+  },
   computed: {
     posterPath: function () {
       return `https://image.tmdb.org/t/p/original${this.movie.poster_path}`
@@ -49,6 +53,22 @@ export default {
     })
       .then((res)=>{
         this.movie = res.data
+        axios({
+          method: 'get',
+          url: `${SERVER_URL}/api/v1/movies/${res.data.id}/rating/`,
+          headers: {
+            Authorization: `JWT ${this.$store.state.userToken}`
+          },
+        })
+          .then((res)=>{
+            this.rating = parseFloat(res.data.rating)
+          })
+          .catch((err) => {
+            console.log(err)
+          })
+      })
+      .catch((err) => {
+        console.log(err)
       })
   }
   
@@ -59,5 +79,5 @@ export default {
   .no-overflow {
     overflow-y: auto;
     max-height: 40vh;
-  }  
+  }
 </style>

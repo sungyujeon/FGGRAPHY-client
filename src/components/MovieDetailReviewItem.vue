@@ -7,8 +7,8 @@
       </div>
     </router-link>
     <div class="ms-2 mb-2" style="text-align: left">  
-      <font-awesome-icon :icon="['fas','thumbs-up']" class="me-1 cursor-on" @click="clickLikeBtn(review)" v-if="isLiked"/>  
-      <font-awesome-icon :icon="['far','thumbs-up']" class="me-1 cursor-on" @click="clickLikeBtn(review)" v-else/><span>{{ like_users_count }}</span>        
+      <font-awesome-icon :icon="['fas','thumbs-up']" class="me-1 cursor-on" @click="clickLikeBtn(review, $event)" v-if="isLiked"/>  
+      <font-awesome-icon :icon="['far','thumbs-up']" class="me-1 cursor-on" @click="clickLikeBtn(review, $event)" v-else/><span>{{ like_users_count }}</span>        
       <font-awesome-icon :icon="['fas','comment-dots']" class="ms-2 me-1" v-if="isComment"/>
       <font-awesome-icon :icon="['far','comment-dots']" class="ms-2 me-1" v-else/>{{ comment_count }}
     </div>
@@ -17,6 +17,7 @@
 
 <script>
 import axios from 'axios'
+import { exec } from '@/scripts/like.js'
 
 const SERVER_URL = process.env.VUE_APP_SERVER_URL
 
@@ -62,7 +63,8 @@ export default {
       })    
   },
   methods: {
-    clickLikeBtn: function (review) {
+    clickLikeBtn: function (review, event) {
+      exec(event)
       axios({
         method: 'post',
         url: `${SERVER_URL}/api/v1/movies/${review.movie}/reviews/${review.id}/like/`,

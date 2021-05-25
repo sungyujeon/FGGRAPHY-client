@@ -99,8 +99,7 @@ export default new Vuex.Store({
           const tmpSearchMovies = res.data
           context.commit('ON_SEARCH', tmpSearchMovies)
         })
-    }
-    
+    },
 
   },
   // getters의 첫 인자는 state
