@@ -13,8 +13,25 @@
 </template>
 
 <script>
+import axios from 'axios'
+// import
+
+const SERVER_URL = process.env.VUE_APP_SERVER_URL
+
 export default {
-  name: 'GenreDetailHome'
+  name: 'GenreDetailHome',
+  created: function () {
+    axios({
+      method: 'get',
+      url: `${SERVER_URL}/api/v1/movies/genres/top-ranked/?ranker_nums=10`,
+      headers: {
+          Authorization: `JWT ${this.$store.state.userToken}`
+      }
+    })
+      .then((res)=>{
+        console.log(res)
+      })
+  }
 }
 </script>
 

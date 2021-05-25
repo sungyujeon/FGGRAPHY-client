@@ -1,8 +1,5 @@
 <template>
   <div class="loading-container container-fluid d-flex flex-column">
-    <div class="loading-btn-container m-5">
-      <button data-anijs="if: mouseover, do: bounceIn animated" class="btn btn-primary">입장하기</button>
-    </div>
     <div class="align-self-center typed-container">
       <vue-typed-js :strings="[
         'FGGRAPHY',
@@ -17,6 +14,9 @@
         <h1 class="typing"></h1>
       </vue-typed-js>
       
+    </div>
+    <div class="loading-btn-container m-5">
+      <button data-anijs="if: mouseover, do: bounceIn animated" class="entrance-btn">ENTER</button>
     </div>
   </div>
 </template>
@@ -47,6 +47,26 @@ export default {
   }
 
   .loading-btn-container {
+    position: absolute;
+    left: 40%;
+    top: 50%;
+  }
+
+  .entrance-btn {
+    width: 200px;
+    -webkit-box-shadow: 0px 10px 13px -7px #000000, 0px 0px 43px 31px rgba(255,255,255,0.41); 
+    box-shadow: 0px 10px 13px -7px #000000, 0px 0px 43px 31px rgba(255,255,255,0.41);
+    border: 10px solid transparent;
+    border-radius: 12px 12px 12px 12px;
+    background-color: transparent;
+    color: #fff;
+    letter-spacing: 3px;
+    transition: 0.3s;
+    opacity: 0.6;
+  }
+  .entrance-btn:hover {
+    opacity: 1;
+
   }
 
   .loading-btn {
