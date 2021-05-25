@@ -72,15 +72,18 @@ export default new Vuex.Store({
           console.log(err)
         })
     },
-    getGenreRanking: function (context) {      
+    getGenreRanking: function (context) { 
+      const testURL = `${SERVER_URL}/api/v1/movies/genres/rankings/`
+      console.log(testURL)
       axios({
         method: 'get',
-        url: `${SERVER_URL}/api/v1/movies/genres/top-reviewed/`,
+        url: `${SERVER_URL}/api/v1/movies/genres/rankings/`,
         headers: {
           Authorization: `JWT ${context.state.userToken}`
         }
       })
-        .then((res)=>{          
+        .then((res)=>{    
+          console.log(res.data)      
           context.commit('GET_GENRE_RANKING', res.data)
         })
         .catch((err)=>{

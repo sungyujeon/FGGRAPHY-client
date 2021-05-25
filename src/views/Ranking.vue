@@ -2,7 +2,7 @@
   <div class="container">
     <VueSlickCarousel :arrows="true" :dots="true">
       <ranking-genres
-      v-for="(genre_group, idx) in getGenreGroups"
+      v-for="(genre_group, idx) of getGenreGroups"
       :key="idx"
       :genreGroup="genre_group"
       >

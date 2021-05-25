@@ -12,6 +12,7 @@ import ReviewDetail from '@/views/ReviewDetail.vue'
 import MovieTrailer from '@/views/MovieTrailer.vue'
 import SearchMovie from '@/views/SearchMovie.vue'
 import Loading from '@/views/Loading.vue'
+import GenreDetailHome from '@/views/GenreDetailHome.vue'
 
 Vue.use(VueRouter)
 
@@ -27,7 +28,7 @@ const routes = [
     component: Home
   },
   {
-    path: '/login',
+    path: '/login/',
     name: 'Login',
     component: Login
   },
@@ -38,27 +39,27 @@ const routes = [
   //   component: Detail,
   // },
   {
-    path: '/signup',
+    path: '/signup/',
     name: 'Signup',
     component: Signup
   },
   {
-    path: '/ranking',
+    path: '/ranking/',
     name: 'Ranking',
     component: Ranking
   },
   {
-    path: '/recommendation',
+    path: '/recommendation/',
     name: 'Recommendation',
     component: Recommendation
   },
   {
-    path: '/movies/:id',
+    path: '/movies/:id/',
     name: 'MovieDetail',
     component: MovieDetail
   },
   {
-    path: '/movies/:movie_id/reviews/:review_id',
+    path: '/movies/:movie_id/reviews/:review_id/',
     name: 'ReviewDetail',
     component: ReviewDetail
   },
@@ -68,15 +69,21 @@ const routes = [
     component: MovieTrailer,
   },
   {
-    path: '/search',
+    path: '/search/',
     name: 'SearchMovie',
     component: SearchMovie,
   },
   {
-    path: '/:username',
+    path: '/:username/',
     name: 'Profile',
     component: Profile
   },
+  {
+    path: '/ranking/:genre_id/:genre_name',
+    name: 'GenreDetailHome',
+    component: GenreDetailHome
+  },
+
 ]
 
 const router = new VueRouter({
