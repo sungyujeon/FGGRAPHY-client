@@ -76,6 +76,12 @@ export default {
     onSearch: function (event) {
       event.preventDefault()
       this.$store.dispatch('onSearch', this.searchInput)
+      this.searchInput = ''
+      console.log(this.$router)
+      // if (this.$router.history.current.name == "SearchMovie") {
+      //   this.$router.go(this.$router.currentRoute)
+      // } else {
+        // }
       this.$router.push({ name: 'SearchMovie' })
     },
   },
