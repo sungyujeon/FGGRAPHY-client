@@ -11,6 +11,7 @@ import Profile from '@/views/Profile.vue'
 import ReviewDetail from '@/views/ReviewDetail.vue'
 import MovieTrailer from '@/views/MovieTrailer.vue'
 import SearchMovie from '@/views/SearchMovie.vue'
+import Loading from '@/views/Loading.vue'
 import GenreDetailHome from '@/views/GenreDetailHome.vue'
 
 Vue.use(VueRouter)
@@ -18,6 +19,11 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
+    name: 'Loading',
+    component: Loading,
+  },
+  {
+    path: '/Home',
     name: 'Home',
     component: Home
   },

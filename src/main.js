@@ -8,6 +8,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faThumbsUp as fasThumbsUp, faCommentDots as fasCommentDots, faPencilAlt, faTrashAlt, faPenSquare, faCog, faStar as fasStar, faStarHalf, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { faThumbsUp as farThumbsUp, faCommentDots as farCommentDots, faCheckCircle, faStar as farStar, faFolderOpen } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import VueTypedJs from 'vue-typed-js'
 
 library.add(  
   fasThumbsUp,
@@ -31,6 +32,7 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.config.productionTip = false
 
 Vue.use(VueGlide)
+Vue.use(VueTypedJs)
 
 new Vue({  
   router,
