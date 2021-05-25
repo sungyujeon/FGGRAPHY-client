@@ -1,6 +1,6 @@
 <template>
   <div class="border my-2 d-flex flex-column justify-content-between" style="max-height: 40vh; min-height: 40vh;">    
-    <router-link :to="{ name: 'ReviewDetail', params: {movie_id: review.movie, review_id: review.id, like_users: review.like_users, like_users_count: review.like_users_count }}" class="link">
+    <router-link :to="{ name: 'ReviewDetail', params: {movie_id: review.movie, review_id: review.id}}" class="link">
       <div class="px-3">         
         <p>작성자 : {{ review.user }}</p>
         <p>리뷰내용 : {{ review.content }}</p>
