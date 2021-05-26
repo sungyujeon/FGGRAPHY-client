@@ -18,7 +18,7 @@
     <div class="loading-btn-container m-5">
 
       <router-link :to="{ name: 'Home' }" class="nav-link">
-       <button data-anijs="if: mouseover, do: bounceIn animated" class="entrance-btn">ENTER</button>
+       <button class="entrance-btn blink">ENTER</button>
       </router-link>
     </div>
   </div>
@@ -69,9 +69,18 @@ export default {
   }
   .entrance-btn:hover {
     opacity: 1;
+    -webkit-animation: none;
+    -moz-animation: none;
+    animation: none;
 
   }
+  .blink {
+    animation: blinker 2s linear infinite;
+  }
 
-  .loading-btn {
+  @keyframes blinker {
+    30% {
+      opacity: 0.2;
+    }
   }
 </style>
