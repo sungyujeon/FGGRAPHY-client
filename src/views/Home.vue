@@ -51,14 +51,17 @@ export default {
             Authorization: `JWT ${this.$store.state.userToken}`
           }
         })
-          .then((res)=>{            
+          .then((res)=>{
             const result = res.data.filter(element => {
-              return element.poster_path !== null              
+              return element.movie.poster_path !== null              
             });
             
             result.forEach(element => {
-              this.oneMovieList.push(element)
+              this.oneMovieList.push(element.movie)
             }) 
+          })
+          .catch((err) => {
+            console.log(err)
           })
         
         axios({
@@ -70,11 +73,11 @@ export default {
         })
           .then((res)=>{            
             const result = res.data.filter(element => {
-              return element.poster_path !== null              
+              return element.movie.poster_path !== null              
             });
             
             result.forEach(element => {
-              this.twoMovieList.push(element)
+              this.twoMovieList.push(element.movie)
             }) 
           })
 
@@ -87,11 +90,11 @@ export default {
         })
           .then((res)=>{            
             const result = res.data.filter(element => {
-              return element.poster_path !== null              
+              return element.movie.poster_path !== null              
             });
             
             result.forEach(element => {
-              this.threeMovieList.push(element)
+              this.threeMovieList.push(element.movie)
             })            
           })
       })
