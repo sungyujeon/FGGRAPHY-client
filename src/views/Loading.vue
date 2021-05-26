@@ -18,7 +18,7 @@
     <div class="loading-btn-container m-5">
 
       <router-link :to="{ name: 'Home' }" class="nav-link">
-       <button data-anijs="if: mouseover, do: bounceIn animated" class="entrance-btn">ENTER</button>
+       <button class="entrance-btn blink">ENTER</button>
       </router-link>
     </div>
   </div>
@@ -26,12 +26,24 @@
 
 <script>
 // import Typed from 'typed.js'
-import { exec } from '@/scripts/loading.js'
+import axios from 'axios'
 export default {
   name: 'Loading',
-  mounted: function () {
-    exec()
-  },
+  created: function () {
+    axios({
+      method: 'get',
+      url: `http://127.0.0.1:8000/api/v1/movies/top-rated/?movie_count=8` ,
+      headers: {
+        Authorization: `JWT ${this.$store.state.userToken}`
+      }
+    })
+      .then((res)=>{
+        this.$store.dispatch('top_rated', res.data)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
 }
 </script>
 
@@ -69,9 +81,18 @@ export default {
   }
   .entrance-btn:hover {
     opacity: 1;
+    -webkit-animation: none;
+    -moz-animation: none;
+    animation: none;
 
   }
+  .blink {
+    animation: blinker 2s linear infinite;
+  }
 
-  .loading-btn {
+  @keyframes blinker {
+    30% {
+      opacity: 0.2;
+    }
   }
 </style>

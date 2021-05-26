@@ -15,6 +15,7 @@ export default new Vuex.Store({
     movies: null,
     genreRankings: null,
     searchMovies: [],
+    top_rated_movies: null,
   },
   mutations: {
     SAVE_JWT: function (state, token) {
@@ -31,6 +32,9 @@ export default new Vuex.Store({
     },
     ON_SEARCH: function (state, tmpSearchMovies) {
       state.searchMovies= tmpSearchMovies
+    },
+    TOP_RATED: function (state, top_rated_movies) {
+      state.top_rated_movies = top_rated_movies
     },
   },
   actions: {
@@ -102,6 +106,9 @@ export default new Vuex.Store({
           const tmpSearchMovies = res.data
           context.commit('ON_SEARCH', tmpSearchMovies)
         })
+      },
+    top_rated: function (context, top_rated_movies) {
+      context.commit('TOP_RATED', top_rated_movies)
     },
 
   },

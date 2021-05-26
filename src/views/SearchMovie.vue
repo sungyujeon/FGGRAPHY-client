@@ -1,18 +1,21 @@
 <template>
-  <div>
-    <div v-for="movie in movies" :key="movie.id">
-      <MovieCard :movie="movie"/>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-12 col-md-6 col-lg-4 p-4" v-for="movie in movies" :key="movie.id">
+        <SearchMovieCard :movie="movie"/>
+      </div>
     </div>
   </div>
+
 </template>
 
 <script>
-import MovieCard from '@/components/MovieCard.vue'
+import SearchMovieCard from '@/components/SearchMovieCard.vue'
 
 export default {
   name: 'SearchMovie',
   components: {
-    MovieCard,
+    SearchMovieCard,
   },
   data: function () {
     return {

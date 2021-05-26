@@ -1,10 +1,10 @@
 <template>
-  <div>recommendationList!!!</div>
+  <img src="" alt="">
 </template>
 
 <script>
 export default {
-  name: 'RecommendationList'
+  name: 'RecommendCard',
 }
 </script>
 

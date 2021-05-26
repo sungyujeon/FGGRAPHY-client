@@ -54,8 +54,6 @@ export default {
           let inputEle = document.querySelector(`#rating-${curr_rating}`)
           inputEle.setAttribute('checked', false)
         }
-        let inputEle = document.querySelector(`#rating-0`)
-        inputEle.setAttribute('checked', true)
 
         this.user_rating = 0
       } else {
@@ -87,16 +85,16 @@ export default {
   },
   watch: {
     rating: function () {
-      this.user_rating = this.$props.rating
-      let curr_rating = this.user_rating
-      if (curr_rating % 1 !== 0) {
-        curr_rating -= 0.5
-        let inputEle = document.querySelector(`#rating-${curr_rating}-half`)
-        inputEle.setAttribute('checked', true)
-      } else {
-        let inputEle = document.querySelector(`#rating-${curr_rating}`)
-        inputEle.setAttribute('checked', true)
-      }
+      // this.user_rating = this.$props.rating
+      // let curr_rating = this.user_rating
+      // if (curr_rating % 1 !== 0) {
+        // curr_rating -= 0.5
+        // let inputEle = document.querySelector(`#rating-${curr_rating}-half`)
+        // inputEle.setAttribute('checked', true)
+      // } else {
+        // let inputEle = document.querySelector(`#rating-${curr_rating}`)
+        // inputEle.setAttribute('checked', true)
+      // }
 
     }
   },
