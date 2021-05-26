@@ -26,12 +26,24 @@
 
 <script>
 // import Typed from 'typed.js'
-import { exec } from '@/scripts/loading.js'
+import axios from 'axios'
 export default {
   name: 'Loading',
-  mounted: function () {
-    exec()
-  },
+  created: function () {
+    axios({
+      method: 'get',
+      url: `http://127.0.0.1:8000/api/v1/movies/top-rated/?movie_count=8` ,
+      headers: {
+        Authorization: `JWT ${this.$store.state.userToken}`
+      }
+    })
+      .then((res)=>{
+        this.$store.dispatch('top_rated', res.data)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
 }
 </script>
 

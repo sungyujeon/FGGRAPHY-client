@@ -1,7 +1,7 @@
 <template>
   <div class="container mt-5">
     <div class="row">
-      <div class="col-12 col-md-6 col-lg-4 px-4" v-for="movie in movies" :key="movie.id">
+      <div class="col-12 col-md-6 col-lg-4 p-4" v-for="movie in movies" :key="movie.id">
         <SearchMovieCard :movie="movie"/>
       </div>
     </div>
