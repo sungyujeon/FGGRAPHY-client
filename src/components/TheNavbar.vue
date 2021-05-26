@@ -1,7 +1,7 @@
 <template>  
   <nav class="navbar navbar-expand-sm navbar-light bg-light">
   <div class="container-fluid">
-    <router-link :to="{ name: 'Home' }" class="nav-link">Home</router-link>
+    <router-link :to="{ name: 'Home' }" class="nav-link">FGGRAPHY</router-link>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -22,7 +22,7 @@
         <!-- search bar -->
         <div class="d-flex">
           <div class="search-center">
-            <li>
+            <li>              
               <input v-model="searchInput" @keyup.enter="onSearch" class="form-control me-2 form-custom-control nav-link" type="search" placeholder="Search" aria-label="Search">
             </li>
           </div>

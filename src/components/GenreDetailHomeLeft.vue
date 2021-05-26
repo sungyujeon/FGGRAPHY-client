@@ -1,43 +1,42 @@
 <template>
   <div class="pt-4">
-    <!-- <div class="ranker" v-if="rankers.length != 0">'{{ rankers[0].username }}'님의 추천영화 리스트</div>
-    <vue-glide v-if="oneMovieList.length != 0">      
-      <vue-glide-slide v-for="movie in oneMovieList" :key="movie.id">         
-        <MovieCard :movie="movie"/>
+    <div class="ranker" v-if="rankers.length != 0">'{{ rankers[0] }}'님의 추천영화 리스트</div>
+    <vue-glide v-if="movieLists[0].length != 0">      
+      <vue-glide-slide v-for="movie in movieLists[0]" :key="movie.movie.id">         
+        <GenreDetailMovieCard :movie="movie"/>
       </vue-glide-slide>      
     </vue-glide>      
 
-    <div class="ranker" v-if="rankers.length != 0">'{{ rankers[1].username }}'님의 추천영화 리스트</div>
-    <vue-glide v-if="twoMovieList.length != 0">
-      <vue-glide-slide v-for="movie in twoMovieList" :key="movie.id">  
-        <MovieCard :movie="movie"/>
+    <div class="ranker" v-if="rankers.length != 0">'{{ rankers[1] }}'님의 추천영화 리스트</div>
+    <vue-glide v-if="movieLists[1].length != 0">      
+      <vue-glide-slide v-for="movie in movieLists[1]" :key="movie.movie.id">         
+        <GenreDetailMovieCard :movie="movie"/>
       </vue-glide-slide>      
-    </vue-glide>
+    </vue-glide>    
 
-    <div class="ranker" v-if="rankers.length != 0">'{{ rankers[2].username }}'님의 추천영화 리스트</div>
-    <vue-glide v-if="threeMovieList.length != 0">
-      <vue-glide-slide v-for="movie in threeMovieList" :key="movie.id">  
-        <MovieCard :movie="movie"/>
+    <div class="ranker" v-if="rankers.length != 0">'{{ rankers[2] }}'님의 추천영화 리스트</div>
+    <vue-glide v-if="movieLists[2].length != 0">      
+      <vue-glide-slide v-for="movie in movieLists[2]" :key="movie.movie.id">         
+        <GenreDetailMovieCard :movie="movie"/>
       </vue-glide-slide>      
-    </vue-glide> -->
+    </vue-glide>    
   </div>
 </template>
 
 <script>
-// import MovieCard from '@/components/MovieCard.vue'
-// import { Glide, GlideSlide } from 'vue-glide-js'
+import GenreDetailMovieCard from '@/components/GenreDetailMovieCard.vue'
+import { Glide, GlideSlide } from 'vue-glide-js'
 
 export default {
   name: 'GenreDetailHomeLeft',  
-  data: function () {
-    return {
-
-    }
+  props: {
+    movieLists: Array,
+    rankers: Array
   },
   components: {
-    // MovieCard,
-    // [Glide.name]: Glide,
-    // [GlideSlide.name]: GlideSlide
+    GenreDetailMovieCard,
+    [Glide.name]: Glide,
+    [GlideSlide.name]: GlideSlide
   },      
 }
 </script>

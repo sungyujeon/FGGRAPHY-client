@@ -16,7 +16,10 @@
       
     </div>
     <div class="loading-btn-container m-5">
-      <button data-anijs="if: mouseover, do: bounceIn animated" class="entrance-btn">ENTER</button>
+
+      <router-link :to="{ name: 'Home' }" class="nav-link">
+       <button data-anijs="if: mouseover, do: bounceIn animated" class="entrance-btn">ENTER</button>
+      </router-link>
     </div>
   </div>
 </template>

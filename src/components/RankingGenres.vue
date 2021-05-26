@@ -1,5 +1,21 @@
 <template>
   <div class="container">
+    <!-- GenrePosterModal -->
+    <div class="modal fade" id="GenrePosterModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <input v-model="searchInput" @keyup.enter="onSearch" class="form-control me-2 form-custom-control nav-link" type="search" placeholder="Search" aria-label="Search">                  
+          </div>            
+          <div class="modal-body">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+            <button type="button" class="btn btn-success" @click="clickpickMovieBtn()">선택</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="row">
       <div 
         v-for="genre in genreGroup"
@@ -7,7 +23,9 @@
         class="col-6 col-md-3 d-flex justify-content-center"     
       >
         <div class="card my-5" style="height: 55vh;">
-          <font-awesome-icon :icon="['fas','cog']" class="me-1 cursor-on oneBtn opacity"/>  
+          <div class="me-1 cursor-on oneBtn opacity" data-bs-toggle="modal" data-bs-target="#GenrePosterModal">
+            <font-awesome-icon :icon="['fas','cog']"/>
+          </div>
           <img :src="'https://image.tmdb.org/t/p/original'+genre.movie.poster_path" class="card-img-top" :alt="genre.movie.poster_path" style="height: 41vh;">
           <div class="card-body">
             <h5 class="card-title">장르 : {{ genre.genre.name }}</h5>
@@ -18,10 +36,10 @@
               </router-link>
             </div>
           </div>
-        </div>
-      </div>    
+        </div>  
+      </div>                
     </div>
-  </div>
+  </div>  
   
 </template>
 
@@ -29,9 +47,17 @@
 <script>
 export default {
   name: 'RankingGenres',    
+  data: function () {
+    return {
+      searchInput: ''
+    }
+  },
   props: {    
     genreGroup: Array   
   },   
+  methods: {
+    
+  }
 }  
 </script>
 
@@ -54,4 +80,6 @@ export default {
     text-decoration: none;
     color: black;
   }
+
+  
 </style>
