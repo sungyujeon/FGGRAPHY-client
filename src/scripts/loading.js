@@ -1,6 +1,0 @@
-function exec () {
-  
-}
-
-
-export { exec }

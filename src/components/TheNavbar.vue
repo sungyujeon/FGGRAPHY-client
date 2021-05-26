@@ -23,7 +23,7 @@
         <div class="d-flex">
           <div class="search-center">
             <li>              
-              <input v-model="searchInput" @keyup.enter="onSearch" class="form-control me-2 form-custom-control nav-link" type="search" placeholder="Search" aria-label="Search">
+              <input v-model="searchInput" @keyup.enter="onSearch" class="form-control me-2 form-custom-control nav-link" type="search" placeholder="Search & Enter" aria-label="Search">
             </li>
           </div>
         </div>
