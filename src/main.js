@@ -24,7 +24,7 @@ library.add(
   fasStar,
   faStarHalf,
   faArrowRight,
-  faFolderOpen
+  faFolderOpen,  
 )
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)

@@ -1,7 +1,7 @@
 <template>
   <div class="container mt-5">
     <!-- <p>{{ this.$route.params.id }}출력되는지 확인하기</p> -->
-    <MovieDetailInfo :movie="movie"/>
+    <MovieDetailInfo :movie="movie" :reviews="reviews"/>
     <MovieDetailReview :reviews="reviews"/> 
     <div v-if="infinityListEndFlag" class="my-4">
       <h3>더 이상 해당영화에 작성된 리뷰가 없습니다.</h3>  

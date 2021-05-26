@@ -1,9 +1,9 @@
 <template>
   <div class="container">
     <ProfileAdmin/>
-    <ProfileInfo/>
-    <ProfileGenre/>
-    <ProfileMovie :highStarMovies="highStarMovies"/>
+    <ProfileInfo v-if="userInfomation.length" :userInfomation="userInfomation"/>
+    <ProfileGenre v-if="userInfomation.length" :userInfomation="userInfomation"/>
+    <ProfileMovie v-if="highStarMovies.length && latelyReviews.length" :highStarMovies="highStarMovies" :latelyReviews="latelyReviews" :latelyReviewer="latelyReviewer"/>
     <ProfileCollection/>    
   </div>
 </template>
@@ -24,7 +24,9 @@ export default {
   data: function () {
     return {
       highStarMovies: [],
-      latelyReviewMovies: [],
+      latelyReviews: [],
+      userInfomation: [],
+      latelyReviewer: this.$route.params.username
     }
   },
   components: {
@@ -53,15 +55,25 @@ export default {
 
     axios({
       method: 'get',
-      url: `${SERVER_URL}/api/v1/movies/reviews/${this.$route.params.username}/latest/?review_num=10`,
+      url: `${SERVER_URL}/api/v1/movies/reviews/${this.$route.params.username}/latest/?review_num=5`,
+      headers: {
+        Authorization: `JWT ${this.$store.state.userToken}`
+      }
+    })
+      .then((res)=>{  
+        console.log(res.data)
+        this.latelyReviews.push(...res.data)  
+      })
+
+    axios({
+      method: 'get',
+      url: `${SERVER_URL}/accounts/profile/${this.$route.params.username}/`,
       headers: {
         Authorization: `JWT ${this.$store.state.userToken}`
       }
     })
       .then((res)=>{        
-        res.data.forEach(element => {
-          console.log(element.movie)
-        });
+        this.userInfomation.push(res.data)
       })
   }
 

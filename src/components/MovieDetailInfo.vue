@@ -11,7 +11,7 @@
           <p class="mt-3 px-5 no-overflow">{{ movie.overview }}</p>                    
         </div>
         <Star :movie="movie" :rating="rating"/>
-        <MovieReviewCreate class="mb-3" :movie="movie"/>        
+        <MovieReviewCreate v-if="movie.poster_path" class="mb-3" :movie="movie" :reviews="reviews"/>        
       </div>      
     </div>      
   </div>
@@ -30,10 +30,13 @@ export default {
     MovieReviewCreate,
     Star,
   },
+  props: {
+    reviews: Array
+  },
   data: function () {
     return {
       movie: {
-        poster_path: null
+        poster_path: ''
       },
       rating: 0,
     }
@@ -60,7 +63,7 @@ export default {
             Authorization: `JWT ${this.$store.state.userToken}`
           },
         })
-          .then((res)=>{
+          .then((res)=>{            
             this.rating = parseFloat(res.data.rating)
           })
           .catch((err) => {

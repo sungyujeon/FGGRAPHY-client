@@ -1,21 +1,5 @@
 <template>
-  <div class="container">
-    <!-- GenrePosterModal -->
-    <div class="modal fade" id="GenrePosterModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <input v-model="searchInput" @keyup.enter="onSearch" class="form-control me-2 form-custom-control nav-link" type="search" placeholder="Search" aria-label="Search">                  
-          </div>            
-          <div class="modal-body">
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-            <button type="button" class="btn btn-success" @click="clickpickMovieBtn()">선택</button>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="container">    
     <div class="row">
       <div 
         v-for="genre in genreGroup"
@@ -24,7 +8,7 @@
       >
         <div class="card my-5" style="height: 55vh;">
           <div class="me-1 cursor-on oneBtn opacity" data-bs-toggle="modal" data-bs-target="#GenrePosterModal">
-            <font-awesome-icon :icon="['fas','cog']"/>
+            <font-awesome-icon :icon="['fas','cog']" @click="clickPosterEditBtn(genre.genre.name)"/>
           </div>
           <img :src="'https://image.tmdb.org/t/p/original'+genre.movie.poster_path" class="card-img-top" :alt="genre.movie.poster_path" style="height: 41vh;">
           <div class="card-body">
@@ -46,17 +30,14 @@
 
 <script>
 export default {
-  name: 'RankingGenres',    
-  data: function () {
-    return {
-      searchInput: ''
-    }
-  },
+  name: 'RankingGenres',   
   props: {    
     genreGroup: Array   
   },   
   methods: {
-    
+    clickPosterEditBtn: function (genre) {
+      this.$emit('clickPosterEditBtn', genre)
+    }
   }
 }  
 </script>
