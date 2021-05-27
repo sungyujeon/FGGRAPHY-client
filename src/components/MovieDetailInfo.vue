@@ -44,7 +44,7 @@ export default {
       movie: {
         poster_path: ''
       },
-      rating: 0,
+      rating: -1,
     }
   },
   computed: {

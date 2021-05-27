@@ -1,29 +1,31 @@
 <template>
   <div id="half-stars-example">
     <div class="rating-group">
-        <label aria-label="0 stars" class="rating__label rating__label--none" for="rating-0"></label>
-        <input class="rating__input rating__input--none" name="rating-0" id="rating-0" value="0" type="radio">
-        <label aria-label="0.5 stars" class="rating__label rating__label--half" for="rating-0-half"><font-awesome-icon :icon="['fas','star-half']" class="rating__icon rating__icon--star"/></label>
-        <input class="rating__input" name="rating" id="rating-0-half" value="0.5" type="radio" @click="onRating(0.5)">
-        <label aria-label="1 star" class="rating__label" for="rating-1"><font-awesome-icon :icon="['fas','star']" class="rating__icon rating__icon--star me-1"/></label>
-        <input class="rating__input" name="rating" id="rating-1" value="1.0" type="radio" @click="onRating(1.0)">
-        <label aria-label="1.5 stars" class="rating__label rating__label--half" for="rating-1-half"><font-awesome-icon :icon="['fas','star-half']" class="rating__icon rating__icon--star"/></label>
-        <input class="rating__input" name="rating" id="rating-1-half" value="1.5" type="radio" @click="onRating(1.5)">
-        <label aria-label="2 stars" class="rating__label" for="rating-2"><font-awesome-icon :icon="['fas','star']" class="rating__icon rating__icon--star me-1"/></label>
-        <input class="rating__input" name="rating" id="rating-2" value="2.0" type="radio" @click="onRating(2.0)">
-        <label aria-label="2.5 stars" class="rating__label rating__label--half" for="rating-2-half"><font-awesome-icon :icon="['fas','star-half']" class="rating__icon rating__icon--star"/></label>
-        <input class="rating__input" name="rating" id="rating-2-half" value="2.5" type="radio" @click="onRating(2.5)">
-        <label aria-label="3 stars" class="rating__label" for="rating-3"><font-awesome-icon :icon="['fas','star']" class="rating__icon rating__icon--star me-1"/></label>
-        <input class="rating__input" name="rating" id="rating-3" value="3.0" type="radio" @click="onRating(3.0)">
-        <label aria-label="3.5 stars" class="rating__label rating__label--half" for="rating-3-half"><font-awesome-icon :icon="['fas','star-half']" class="rating__icon rating__icon--star"/></label>
-        <input class="rating__input" name="rating" id="rating-3-half" value="3.5" type="radio" @click="onRating(3.5)">
-        <label aria-label="4 stars" class="rating__label" for="rating-4"><font-awesome-icon :icon="['fas','star']" class="rating__icon rating__icon--star me-1"/></label>
-        <input class="rating__input" name="rating" id="rating-4" value="4.0" type="radio" @click="onRating(4.0)">
-        <label aria-label="4.5 stars" class="rating__label rating__label--half" for="rating-4-half"><font-awesome-icon :icon="['fas','star-half']" class="rating__icon rating__icon--star"/></label>
-        <input class="rating__input" name="rating" id="rating-4-half" value="4.5" type="radio" @click="onRating(4.5)">
-        <label aria-label="5 stars" class="rating__label" for="rating-5"><font-awesome-icon :icon="['fas','star']" class="rating__icon rating__icon--star"/></label>
-        <input class="rating__input" name="rating" id="rating-5" value="5.0" type="radio" @click="onRating(5.0)">
+      <label aria-label="0 stars" class="rating__label rating__label--none" for="rating-0"></label>
+      <input class="rating__input rating__input--none" name="rating-0" id="rating-0" value="0" type="radio">
+      <label aria-label="0.5 stars" class="rating__label rating__label--half" for="rating-0-half"><font-awesome-icon :icon="['fas','star-half']" class="rating__icon rating__icon--star"/></label>
+      <input class="rating__input" name="rating" id="rating-0-half" value="0.5" type="radio" @click="onRating(0.5)">
+      <label aria-label="1 star" class="rating__label" for="rating-1"><font-awesome-icon :icon="['fas','star']" class="rating__icon rating__icon--star me-1"/></label>
+      <input class="rating__input" name="rating" id="rating-1" value="1.0" type="radio" @click="onRating(1.0)">
+      <label aria-label="1.5 stars" class="rating__label rating__label--half" for="rating-1-half"><font-awesome-icon :icon="['fas','star-half']" class="rating__icon rating__icon--star"/></label>
+      <input class="rating__input" name="rating" id="rating-1-half" value="1.5" type="radio" @click="onRating(1.5)">
+      <label aria-label="2 stars" class="rating__label" for="rating-2"><font-awesome-icon :icon="['fas','star']" class="rating__icon rating__icon--star me-1"/></label>
+      <input class="rating__input" name="rating" id="rating-2" value="2.0" type="radio" @click="onRating(2.0)">
+      <label aria-label="2.5 stars" class="rating__label rating__label--half" for="rating-2-half"><font-awesome-icon :icon="['fas','star-half']" class="rating__icon rating__icon--star"/></label>
+      <input class="rating__input" name="rating" id="rating-2-half" value="2.5" type="radio" @click="onRating(2.5)">
+      <label aria-label="3 stars" class="rating__label" for="rating-3"><font-awesome-icon :icon="['fas','star']" class="rating__icon rating__icon--star me-1"/></label>
+      <input class="rating__input" name="rating" id="rating-3" value="3.0" type="radio" @click="onRating(3.0)">
+      <label aria-label="3.5 stars" class="rating__label rating__label--half" for="rating-3-half"><font-awesome-icon :icon="['fas','star-half']" class="rating__icon rating__icon--star"/></label>
+      <input class="rating__input" name="rating" id="rating-3-half" value="3.5" type="radio" @click="onRating(3.5)">
+      <label aria-label="4 stars" class="rating__label" for="rating-4"><font-awesome-icon :icon="['fas','star']" class="rating__icon rating__icon--star me-1"/></label>
+      <input class="rating__input" name="rating" id="rating-4" value="4.0" type="radio" @click="onRating(4.0)">
+      <label aria-label="4.5 stars" class="rating__label rating__label--half" for="rating-4-half"><font-awesome-icon :icon="['fas','star-half']" class="rating__icon rating__icon--star"/></label>
+      <input class="rating__input" name="rating" id="rating-4-half" value="4.5" type="radio" @click="onRating(4.5)">
+      <label aria-label="5 stars" class="rating__label" for="rating-5"><font-awesome-icon :icon="['fas','star']" class="rating__icon rating__icon--star"/></label>
+      <input class="rating__input" name="rating" id="rating-5" value="5.0" type="radio" @click="onRating(5.0)">
+      <span class="rating-number">{{ user_rating }}</span>
     </div>
+
   </div>
 </template>
 
@@ -44,25 +46,6 @@ export default {
   },
   methods: {
     onRating: function (rating_num) {
-      let curr_rating = rating_num
-      if (this.user_rating == rating_num) {
-        if (curr_rating % 1 !== 0) {
-          curr_rating -= 0.5
-          let inputEle = document.querySelector(`#rating-${curr_rating}-half`)
-          inputEle.setAttribute('checked', false)
-        } else {
-          let inputEle = document.querySelector(`#rating-${curr_rating}`)
-          inputEle.setAttribute('checked', false)
-        }
-
-        this.user_rating = 0
-      } else {
-        this.user_rating = rating_num
-        let zeroInputEle = document.querySelector(`#rating-0`)
-        if (zeroInputEle['checked'] === true) {
-          zeroInputEle.setAttribute('checked', false)
-        }
-
       axios({
         method: 'post',
         url: `${SERVER_URL}/api/v1/movies/${this.$props.movie.id}/rating/`,
@@ -74,35 +57,55 @@ export default {
         },
       })
         .then(()=>{
-          
+          let inputEle = document.querySelector(`#rating-0`)
+          inputEle.removeAttribute('checked')
+          this.user_rating = rating_num
         })
         .catch((err) => {
           console.log(err)
         })
+      
       return null
-      }
+      
     },
   },
   watch: {
     rating: function () {
-      // this.user_rating = this.$props.rating
-      // let curr_rating = this.user_rating
-      // if (curr_rating % 1 !== 0) {
-        // curr_rating -= 0.5
-        // let inputEle = document.querySelector(`#rating-${curr_rating}-half`)
-        // inputEle.setAttribute('checked', true)
-      // } else {
-        // let inputEle = document.querySelector(`#rating-${curr_rating}`)
-        // inputEle.setAttribute('checked', true)
-      // }
-
-    }
+      this.user_rating = this.$props.rating
+      console.log('현재 부여한 rating')
+      console.log(new Intl.NumberFormat().format(this.user_rating))
+      let curr_rating = this.user_rating
+      if (curr_rating % 1 !== 0) {
+        curr_rating -= 0.5
+        let inputEle = document.querySelector(`#rating-${curr_rating}-half`)
+        inputEle.setAttribute('checked', true)
+      } else {
+        let inputEle = document.querySelector(`#rating-${curr_rating}`)
+        inputEle.setAttribute('checked', true)
+      }
+    },
   },
 }
 </script>
 
 <style>
+  #half-stars-example {
+    margin: 1rem 0;
+  }
+  .rating-number {
+    font-size: 1.6rem;
+    align-self: center;
+    margin-left: 1rem;
+    font-weight: 600;
+  }
   /* add padding and positioning to half star labels */
+  .rating__label--none {
+    display: none;
+  }
+  .rating__input--none {
+    display: none;
+  }
+
   .rating-group {
     display: inline-flex;
   }
