@@ -2,7 +2,7 @@
   <div>
     <p class="m-1" v-if="!isClickCommentUpdate">{{ comment.user }} : {{ comment.content }}</p>
     <p class="m-1" v-if="isClickCommentUpdate">{{ comment.user}} :</p>
-    <div style="font-size: 8px;" v-if="comment.user === $store.getters.decodedToken.user_id"> 
+    <div style="font-size: 8px;" v-if="comment.user === $store.getters.decodedToken.username"> 
       <div v-if="!isClickCommentUpdate">
         <span class="ms-1 cursor-on" @click="clickCommentUpdateBtn(comment)">수정</span> | <span class="cursor-on" @click="clickCommentDeleteBtn(comment)">삭제</span>
       </div>

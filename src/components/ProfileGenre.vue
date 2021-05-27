@@ -153,11 +153,12 @@ export default {
 
 <style scoped> 
   h1 {
-    margin: 2em auto 0;
-    margin-bottom: 10px;
+    margin: 1em auto 0;
+    margin-bottom: 15px;
     font: 700 3em;
     color: black;
     text-align: center;
+    font-weight: bold;
   }
 
   h5 {
@@ -274,7 +275,7 @@ export default {
 
   .legend-table {
     padding: 15px;    
-    margin: 2em auto 0;
+    margin: 1em auto 0;
   }
   .legend-table__marker {
     width: 25px;

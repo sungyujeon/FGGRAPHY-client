@@ -81,6 +81,13 @@ export default {
 </script>
 
 <style scoped>
+  .one {
+    -webkit-box-shadow: 0px 10px 13px -7px #ee4f4f, 0px 0px 43px 31px rgba(255,255,255,0.41) !important; 
+    box-shadow: 0px 10px 13px -7px #ee4f4f, 0px 0px 43px 31px rgba(255,255,255,0.41) !important;
+    border: 10px solid transparent !important;
+    border-radius: 12px 12px 12px 12px !important;
+    background-color: transparent !important;
+  }
   .content {	  
     font-weight: 300;  
     width: 13vw;  
@@ -121,15 +128,15 @@ export default {
     transition: top 0.5s ease 0s;
   }
   .ranking ul li.one { top: 0; }
-  .ranking ul li.two { top: 5.5em; }
-  .ranking ul li.three { top: 11em; }
-  .ranking ul li.four  { top: 16.5em; }
-  .ranking ul li.five  { top: 22em; }
-  .ranking ul li.six  { top: 27.5em; }
-  .ranking ul li.seven  { top: 33em; }
-  .ranking ul li.eight  { top: 38.5em; }
-  .ranking ul li.nine  { top: 44em; }
-  .ranking ul li.ten  { top: 49.5em; }
+  .ranking ul li.two { top: 7em; }
+  .ranking ul li.three { top: 12.2em; }
+  .ranking ul li.four  { top: 18em; }
+  .ranking ul li.five  { top: 23.5em; }
+  .ranking ul li.six  { top: 29em; }
+  .ranking ul li.seven  { top: 34.5em; }
+  .ranking ul li.eight  { top: 40em; }
+  .ranking ul li.nine  { top: 45.5em; }
+  .ranking ul li.ten  { top: 51em; }
   .ranking ul li img {
     display: block;
     width: 20%;
