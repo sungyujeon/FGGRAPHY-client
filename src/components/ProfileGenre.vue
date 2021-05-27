@@ -151,7 +151,7 @@ export default {
 }
 </script>
 
-<style> 
+<style scoped>
   h1 {
     margin: 2em auto 0;
     margin-bottom: 10px;
