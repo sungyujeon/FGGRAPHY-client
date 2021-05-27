@@ -14,6 +14,7 @@ import axios from 'axios'
 
 const API_KEY = process.env.VUE_APP_YOUTUBE_API_KEY
 const API_URL = 'https://www.googleapis.com/youtube/v3/search'
+const SERVER_URL = process.env.VUE_APP_SERVER_URL
 
 export default {
   name: 'Trailer',
@@ -54,7 +55,7 @@ export default {
 
     axios({
       method: 'get',
-      url: `http://127.0.0.1:8000/api/v1/movies/${this.$route.params.id}/`,
+      url: `${SERVER_URL}/api/v1/movies/${this.$route.params.id}/`,
       headers: {
         Authorization: `JWT ${this.$store.state.userToken}`,          
       },

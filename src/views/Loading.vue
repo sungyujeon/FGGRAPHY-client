@@ -27,12 +27,15 @@
 <script>
 // import Typed from 'typed.js'
 import axios from 'axios'
+
+const SERVER_URL = process.env.VUE_APP_SERVER_URL
+
 export default {
   name: 'Loading',
   created: function () {
     axios({
       method: 'get',
-      url: `http://127.0.0.1:8000/api/v1/movies/top-rated/?movie_count=8` ,
+      url: `${SERVER_URL}/api/v1/movies/top-rated/?movie_count=8` ,
       headers: {
         Authorization: `JWT ${this.$store.state.userToken}`
       }
