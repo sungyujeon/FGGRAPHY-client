@@ -35,7 +35,7 @@
           <div v-if="this.$store.getters.decodedToken" class="d-flex">
             <li class="nav-custom-item d-flex">
               <div class="nav-link">
-                <router-link class="nav-username" :to="{ name: 'Profile', params: {username: this.$store.getters.decodedToken.username} }">{{ this.$store.getters.decodedToken.username }}</router-link>님 반갑습니다!
+                <router-link class="nav-username" :to="{ name: 'Profile', params: {username: this.$store.getters.decodedToken.username} }">{{ this.$store.getters.decodedToken.username }}</router-link>님<span><img src="./static/one_tier_color_fix.svg" alt="" id="nav-tier"></span> 반갑습니다!
               </div>
             </li>
             <li class="nav-custom-item">

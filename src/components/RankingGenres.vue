@@ -12,9 +12,9 @@
           </div>
           <img :src="'https://image.tmdb.org/t/p/original'+genre.movie.poster_path" class="card-img-top" :alt="genre.movie.poster_path" style="height: 41vh;">
           <div class="card-body">
-            <h5 class="card-title">장르 : {{ genre.genre.name }}</h5>
-            <p class="card-text">ranker : {{ genre.user }}</p>
-            <div class="cursor-on">
+            <h5 class="card-title" style="font-size: 26px;">장르 : {{ genre.genre.name }}</h5>
+            <p class="card-text mb-3" style="font-size: 20px;">Ranker : {{ genre.user }}</p>
+            <div class="cursor-on" style="font-size: 26px; color: brown;">
               <router-link class="genre-title" :to="{ name: 'GenreDetailHome', params: {genre_id: genre.genre.id, genre_name: genre.genre.name} }">
                 <span>{{ genre.genre.name }}Page</span> <font-awesome-icon :icon="['far','folder-open']" class="me-1"/>
               </router-link>

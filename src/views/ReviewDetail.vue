@@ -2,7 +2,7 @@
   <div class="container my-3" style="width: 50vw;" v-if="review !== null">
     <div class="card" style="text-align: left;" >
       <div class="card-header d-flex justify-content-between">                
-        <div class="mb-0">[{{ review.movie }}] : {{ review.user }}님의 review</div>
+        <div class="mb-0">[{{ review.movie.title }}] : {{ review.user }}님의 리뷰</div>
         <div v-if="review.user === this.$store.getters.decodedToken.username">        
           <font-awesome-icon :icon="['fas','pencil-alt']" class="me-1 cursor-on" @click="clickEditBtn(review)"/><span class="cursor-on" @click="clickEditBtn(review)">수정</span> |
           <font-awesome-icon :icon="['fas','trash-alt']" class="me-1 cursor-on" data-bs-toggle="modal" data-bs-target="#deleteModal"/><span class="cursor-on" data-bs-toggle="modal" data-bs-target="#deleteModal">삭제</span>
@@ -144,7 +144,7 @@ export default {
       exec(event)
       axios({
         method: 'post',
-        url: `${SERVER_URL}/api/v1/movies/${review.movie}/reviews/${review.id}/like/`,
+        url: `${SERVER_URL}/api/v1/movies/${review.movie.id}/reviews/${review.id}/like/`,
         headers: {
           Authorization: `JWT ${this.$store.state.userToken}`
         }
@@ -169,7 +169,7 @@ export default {
         }
       })
         .then(()=>{     
-          this.$router.push({name: 'MovieDetail', params: {id: review.movie}})
+          this.$router.push({name: 'MovieDetail', params: {id: review.movie.id}})
           this.$router.go(this.$router.currentRoute) 
         })
     },

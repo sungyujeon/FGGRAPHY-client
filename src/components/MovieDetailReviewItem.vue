@@ -1,10 +1,10 @@
 <template>
-  <div class="border my-2 d-flex flex-column justify-content-between" style="max-height: 40vh; min-height: 40vh;">    
-    
-    <router-link :to="{ name: 'ReviewDetail', params: {movie_id: review.movie, review_id: review.id, review_username: review.user }}" class="link">
-      <div class="px-3">         
-        <p>작성자 : {{ review.user }}</p>
-        <p>리뷰내용 : {{ review.content }}</p>
+  <div class="border my-2 d-flex flex-column justify-content-between" style="max-height: 40vh; min-height: 40vh; border-radius: 15px; background-color: smokewhite;">        
+    <router-link :to="{ name: 'ReviewDetail', params: {movie_id: review.movie.id, review_id: review.id, review_username: review.user }}" class="link">
+      <div class="px-2 m-3" style="text-align: left; font-size: 20px; border-radius: 20px;">         
+        <p>{{ review.user }}</p>
+        <hr>
+        <p>{{ review.content }}</p>
       </div>
     </router-link>
     <div class="ms-2 mb-2" style="text-align: left">  
@@ -68,7 +68,7 @@ export default {
       exec(event)
       axios({
         method: 'post',
-        url: `${SERVER_URL}/api/v1/movies/${review.movie}/reviews/${review.id}/like/`,
+        url: `${SERVER_URL}/api/v1/movies/${review.movie.id}/reviews/${review.id}/like/`,
         headers: {
           Authorization: `JWT ${this.$store.state.userToken}`
         }

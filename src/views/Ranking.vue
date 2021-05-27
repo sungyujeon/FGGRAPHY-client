@@ -16,8 +16,8 @@
           <div class="modal-header">
             <div>
               <p>{{ genreName }} 메인 영화 고르기</p>
-            </div>            
-            <input v-model="searchInput" @keyup.enter="onSearch" class="form-control me-2 form-custom-control nav-link" type="search" placeholder="Search" aria-label="Search">                  
+            </div>         
+            <input v-model="searchInput" class="form-control form-custom-control" type="text" placeholder="Search" aria-label="Search">                  
           </div>            
           <div class="modal-body">
           </div>

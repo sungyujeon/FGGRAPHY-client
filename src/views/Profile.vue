@@ -3,15 +3,13 @@
     <ProfileAdmin/>
     <ProfileInfo v-if="userInfomation.length" :userInfomation="userInfomation"/>
     <ProfileGenre v-if="userInfomation.length" :userInfomation="userInfomation"/>
-    <ProfileMovie v-if="highStarMovies.length && latelyReviews.length" :highStarMovies="highStarMovies" :latelyReviews="latelyReviews" :latelyReviewer="latelyReviewer"/>
-    <ProfileCollection/>    
+    <ProfileMovie v-if="highStarMovies.length && latelyReviews.length" :highStarMovies="highStarMovies" :latelyReviews="latelyReviews" :latelyReviewer="latelyReviewer"/>       
   </div>
 </template>
 
 <script>
 import ProfileInfo from '@/components/ProfileInfo.vue'
 import ProfileGenre from '@/components/ProfileGenre.vue'
-import ProfileCollection from '@/components/ProfileCollection.vue'
 import ProfileMovie from '@/components/ProfileMovie.vue'
 import ProfileAdmin from '@/components/ProfileAdmin.vue'
 import { mapGetters } from 'vuex'
@@ -32,8 +30,7 @@ export default {
   components: {
     ProfileInfo,
     ProfileGenre,  
-    ProfileMovie,
-    ProfileCollection,
+    ProfileMovie,   
     ProfileAdmin,
   },
   computed: {

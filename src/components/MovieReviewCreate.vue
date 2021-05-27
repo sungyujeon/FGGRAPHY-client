@@ -16,7 +16,8 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="reviewCreateModalLabel">'{{ this.movie.title }}' 리뷰 작성page</h5>            
+            <h5 class="modal-title m-0" id="reviewCreateModalLabel" style="text-align: left;">'{{ this.movie.title }}' 리뷰 작성</h5>   
+            <h5 class="m-0" style="text-align: right;">작성자 : {{this.$store.getters.decodedToken.username}}</h5>         
             <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
           </div>
           <div class="modal-body">
@@ -102,8 +103,11 @@ export default {
       }
     })
       .then((res)=>{       
+        console.log(res.data)
         this.isReviewInUser = res.data.isWritten
-        this.reviewId = res.data.reviewInfos.id
+        if (res.data.isWritten) {
+          this.reviewId = res.data.reviewInfos.id
+        }        
       })    
   }
 }

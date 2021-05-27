@@ -44,8 +44,8 @@ export default {
       })
         .then((res)=>{  
           console.log(res.data)
-          this.$router.push({name: 'ReviewDetail', params: {movie_id: latelyReviewMovie.id, review_id: res.data.reviewInfos.id, review_username: res.data.reviewInfos.user}})
-          this.$router.go(this.$router.currentRoute)          
+          console.log(latelyReview)
+          this.$router.push({name: 'ReviewDetail', params: {movie_id: latelyReview.movie.id, review_id: latelyReview.id, review_username: latelyReview.user}})                   
         })  
     }    
   }

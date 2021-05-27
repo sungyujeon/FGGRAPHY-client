@@ -10,7 +10,7 @@
       <p class="card-movie-description">개봉년도: {{ movie.release_date.substring(0,4) }} | 런타임: {{ movie.runtime }}분</p>
       <p class="card-movie-description">평균★{{ movie.rating_average }}</p> 
     </div>
-  </div>  
+  </div>
 </template>
 
 

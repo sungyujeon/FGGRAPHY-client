@@ -95,8 +95,7 @@ function exec () {
       sY = nY;
     };
 
-    this.onpointerup = function (e) {
-      console.log(e)
+    this.onpointerup = function () {
       odrag.timer = setInterval(function () {
         desX *= 0.95;
         desY *= 0.95;
