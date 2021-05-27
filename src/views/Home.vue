@@ -4,8 +4,7 @@
       <div class="col-10">
         <HomeLeft :rankers="rankers" :oneMovieList="oneMovieList" :twoMovieList="twoMovieList" :threeMovieList="threeMovieList"/>
       </div>
-      <div class="col-2">
-        <div class="mt-5" style="font-size: 20px; font-weight: bold;">전체랭킹</div>
+      <div class="col-2">        
         <HomeRight :rankers="rankers"/>
       </div>
     </div>

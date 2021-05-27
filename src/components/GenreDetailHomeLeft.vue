@@ -44,7 +44,7 @@ export default {
 <style>
   .ranker {
     text-align: left;
-    margin-left: 35px;
+    margin-left: 18px;
     margin-bottom: 6px;
     font-weight: bold;
     font-size: 23px;

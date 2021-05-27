@@ -13,7 +13,7 @@
       <p v-if="userInfomation[0].username === this.$store.getters.decodedToken.username">팔로우: {{ userInfomation[0].followers_count}} | 팔로잉: {{ userInfomation[0].followings_count}}</p>      
       <p v-else> 
         <font-awesome-icon :icon="['fas','star']" class="cursor-on" v-if="isFollow" @click="clickUserFollowBtn(userInfomation[0].username)"/> 
-        <font-awesome-icon :icon="['far','star']" class="cursor-on" v-else @click="clickUserFollowBtn(userInfomation[0].username)"/> <span>{{ userInfomation[0].followers_count}}</span>
+        <font-awesome-icon :icon="['far','star']" class="cursor-on" v-else @click="clickUserFollowBtn(userInfomation[0].username)"/> <span>{{ follow_users_count }}</span>
       </p>
     </div> 
   </div>
@@ -29,7 +29,7 @@ export default {
   data: function () {
     return {
       isFollow: false,
-      follow_users_count: 0,
+      follow_users_count: this.$props.userInfomation[0].followers_count,
     }    
   },
   props: {
