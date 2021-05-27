@@ -35,7 +35,15 @@
           <div v-if="this.$store.getters.decodedToken" class="d-flex">
             <li class="nav-custom-item d-flex">
               <div class="nav-link">
-                <router-link class="nav-username" :to="{ name: 'Profile', params: {username: this.$store.getters.decodedToken.username} }">{{ this.$store.getters.decodedToken.username }}</router-link>님<span><img src="./static/one_tier_color_fix.svg" alt="" id="nav-tier"></span> 반갑습니다!
+                <router-link class="nav-username" :to="{ name: 'Profile', params: {username: this.$store.getters.decodedToken.username} }">{{ this.$store.getters.decodedToken.username }}</router-link><span class="m-0">님</span>
+                <span>
+                  <img src="./static/zero_tier_color_fix.svg" alt="" id="nav-tier" v-if="this.$store.state.userTier === 0" class="m3-2">
+                  <img src="./static/one_tier_color_fix.svg" alt="" id="nav-tier" v-if="this.$store.state.userTier === 1">
+                  <img src="./static/two_tier_color_fix.svg" alt="" id="nav-tier" v-if="this.$store.state.userTier === 2">
+                  <img src="./static/three_tier_color_fix.svg" alt="" id="nav-tier" v-if="this.$store.state.userTier === 3">
+                  <img src="./static/four_tier_color_fix.svg" alt="" id="nav-tier" v-if="this.$store.state.userTier === 4">
+                  <img src="./static/five_tier_color_fix.svg" alt="" id="nav-tier" v-if="this.$store.state.userTier === 5" class="m-0">
+                </span>
               </div>
             </li>
             <li class="nav-custom-item">

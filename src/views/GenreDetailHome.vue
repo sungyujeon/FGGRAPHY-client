@@ -4,9 +4,8 @@
       <div class="col-10">
         <GenreDetailHomeLeft :movieLists="movieLists" :rankers="rankers"/>
       </div>
-      <div class="col-2">
-        <div class="mt-5" style="font-size: 20px; font-weight: bold;">{{ this.$route.params.genre_name }}랭킹</div>
-        <GenreDetailHomeRight :rankers="rankers"/>
+      <div class="col-2">        
+        <GenreDetailHomeRight :rankers="rankers" :genre="genre"/>
       </div>
     </div>
   </div>
@@ -25,6 +24,7 @@ export default {
     return {
       movieLists: [],
       rankers: [],
+      genre: this.$route.params.genre_name
     }
   },
   components: {

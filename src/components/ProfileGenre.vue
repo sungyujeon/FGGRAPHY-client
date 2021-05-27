@@ -153,11 +153,12 @@ export default {
 
 <style scoped> 
   h1 {
-    margin: 2em auto 0;
-    margin-bottom: 10px;
+    margin: 1em auto 0;
+    margin-bottom: 15px;
     font: 700 3em;
     color: black;
     text-align: center;
+    font-weight: bold;
   }
 
   h5 {
@@ -174,7 +175,7 @@ export default {
   .periodic-table {
     display: grid;
     grid-template-columns: repeat(6, 150px);
-    grid-template-rows: repeat(4, 130px);
+    grid-template-rows: repeat(3, 130px);
     grid-gap: 10px;
     margin: auto;
     max-width: 1400px;
@@ -211,11 +212,15 @@ export default {
   }  
 
   .zero-tier {
-    animation: changeColorBack 12s infinite alternate;
+    /* animation: changeColorBack 12s infinite alternate; */
+    background: #cd85fd;
   }
   .zero-tier .title,
   .zero-tier .description {
-    animation: changeColor 12s infinite alternate;
+    /* animation: changeColor 12s infinite alternate; */
+    background: -webkit-linear-gradient(#cd85fd, #561669);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   .one-tier {
@@ -270,7 +275,7 @@ export default {
 
   .legend-table {
     padding: 15px;    
-    margin: 2em auto 0;
+    margin: 1em auto 0;
   }
   .legend-table__marker {
     width: 25px;
@@ -287,10 +292,12 @@ export default {
   }
 
   .zero-tier-text {
-    animation: changeColor 12s infinite alternate;    
+    background: -webkit-linear-gradient(#cd85fd, #561669);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;   
     font-weight: bold;
   }
-  @keyframes changeColor {
+  /* @keyframes changeColor {
     0% {      
       color: #fbc2eb;
     }
@@ -303,10 +310,10 @@ export default {
     100% {      
       color: #a6c1ee;
     }
-  }
+  } */
 
 /* background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%); */
-  @keyframes changeColorBack {
+  /* @keyframes changeColorBack {
     0% {      
       background: #fbc2eb;
     }
@@ -319,7 +326,7 @@ export default {
     100% {      
       background: #a6c1ee;
     }
-  } 
+  }  */
   
   .one-tier-text {
     background: -webkit-linear-gradient(#ff616d, #ffc171);

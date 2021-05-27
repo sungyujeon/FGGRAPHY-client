@@ -6,9 +6,9 @@
         '랭킹으로 즐기는 영화 커뮤니티',
         '평범한 회사원인 내가 알고보니 영화도사?!',
         '영화에 대한 나의 열정을 마음껏 뽑내볼 수 있다니!',
-        '추천받은 로맨스 영화로 여자친구를 만들었어요. -OO님',
-        '랭커로 활동하시는 분들의 추천영화들 덕분에 좋은 영화들을 많이 알게되었어요. -OO님',
-        '헤어진 여자친구가 적극 추천했던 영화 평점이 2점인거보니 역시 잘 헤어진거 같아요. -OO님',
+        '추천받은 로맨스 영화로 여자친구를 만들었어요. - 서울 1반 류영석님',
+        '랭커로 활동하시는 분들의 추천영화들 덕분에 좋은 영화들을 많이 알게되었어요. - 서울 1반 김상재님',
+        '헤어진 여자친구가 적극 추천했던 영화 평점이 1점인거보니 역시 잘 헤어진거 같아요. - 서울 1반 장동균님',
         '나만의 영화 아이덴티티를 자유롭게 보여줄 수 있는 FGGRAPHY로 어서오세요!',
       ]">
         <h1 class="typing"></h1>
@@ -16,7 +16,6 @@
       
     </div>
     <div class="loading-btn-container m-5">
-
       <router-link :to="{ name: 'Home' }" class="nav-link">
        <button class="entrance-btn blink">ENTER</button>
       </router-link>
@@ -65,9 +64,10 @@ export default {
   }
 
   .loading-btn-container {
-    position: absolute;
-    left: 40%;
-    top: 50%;
+    position:absolute;
+    top: 40%;
+    left:50%; 
+    transform: translateX(-50%);
   }
 
   .entrance-btn {

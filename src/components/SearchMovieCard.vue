@@ -1,6 +1,6 @@
 <template>  
   <div>        
-    <router-link :to="{ name: 'MovieDetail', params: {id: this.movie.id} }" class=".search-router-container">
+    <router-link :to="{ name: 'MovieDetail', params: {id: this.movie.id} }" class="search-router-container">
       <img :src="posterPath" class="search-img rounded-3" alt="...">                   
     </router-link>
     <div class="d-flex flex-column mt-2">
@@ -33,7 +33,7 @@ export default {
 
   .search-img {
     width: 100%;
-    height: 55vh;
+    height: 45vh;
   }
 
   .card-movie-title {

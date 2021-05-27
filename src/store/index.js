@@ -16,6 +16,7 @@ export default new Vuex.Store({
     genreRankings: null,
     searchMovies: [],
     top_rated_movies: null,
+    userTier: null,
   },
   mutations: {
     SAVE_JWT: function (state, token) {
@@ -36,6 +37,9 @@ export default new Vuex.Store({
     TOP_RATED: function (state, top_rated_movies) {
       state.top_rated_movies = top_rated_movies
     },
+    GET_USER_TIER: function (state, tier) {
+      state.userTier = tier
+    }
   },
   actions: {
     getJWT: function (context, credential) {
@@ -48,6 +52,21 @@ export default new Vuex.Store({
         .then((res)=>{
           // console.log(res.data.token)
           context.commit('SAVE_JWT', res.data.token)
+        })
+        .catch((err)=>{
+          console.log(err)
+        })
+    },
+    getUserTier: function (context, username) {
+      console.log(username)
+      axios({
+        method: 'get',
+        url: `${SERVER_URL}/accounts/profile/${username}/single/`,        
+      })
+        .then((res)=>{
+          console.log(res.data)
+          const UserTier = res.data.tier
+          context.commit('GET_USER_TIER', UserTier)
         })
         .catch((err)=>{
           console.log(err)
@@ -110,7 +129,6 @@ export default new Vuex.Store({
     top_rated: function (context, top_rated_movies) {
       context.commit('TOP_RATED', top_rated_movies)
     },
-
   },
   // getters의 첫 인자는 state
   getters: {
