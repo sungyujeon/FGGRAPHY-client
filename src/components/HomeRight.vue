@@ -1,52 +1,69 @@
 <template>
-  <div>
-    <!-- <div v-for="(ranker, idx) in rankers" :key="idx" class="mt-5">
-      {{idx+1}}: {{ ranker.username }}
-    </div> -->
+  <div>    
     <div class="content">
       <h1 class="mt-7">전체 랭킹</h1>      
       <div class="ranking">
         <ul>
-          <li class="one d-flex" id="one">
-            <img src="./static/one_tier.svg">
-            <p class="starring">Jack Nicholson</p>                        
-          </li>
-          <li class="two d-flex" id="two">
-            <img src="./static/two_tier.svg">
-            <p class="starring">Heath Ledger</p>            
-          </li>
-          <li class="three d-flex" id="three">
-            <img src="./static/three_tier.svg">
-            <p class="starring">Jared Leto</p>            
-          </li>
-          <li class="four d-flex" id="four">
-            <img src="./static/four_tier.svg">
-            <p class="starring">Joaquin Phoenix</p>            
-          </li>
-          <li class="five d-flex" id="five">
-            <img src="./static/five_tier.svg">
-            <p class="starring">Joaquin Phoenix</p>            
-          </li>
-          <li class="six d-flex" id="six">
-            <img src="./static/six_tier.svg">
-            <p class="starring">Joaquin Phoenix</p>            
-          </li>
-          <li class="seven d-flex" id="seven">
-            <img src="./static/seven_tier.svg">
-            <p class="starring">Joaquin Phoenix</p>            
-          </li>
-          <li class="eight d-flex" id="eight">
-            <img src="./static/eight_tier.svg">
-            <p class="starring">Joaquin Phoenix</p>            
-          </li>
-          <li class="nine d-flex" id="nine">
-            <img src="./static/nine_tier.svg">
-            <p class="starring">Joaquin Phoenix</p>            
-          </li>
-          <li class="ten d-flex" id="ten">
-            <img src="./static/ten_tier.svg">
-            <p class="starring">Joaquin Phoenix</p>            
-          </li>
+          <router-link class="nav-username" :to="{ name: 'Profile', params: {username: rankers[0].username} }">
+            <li class="one d-flex" id="one">
+              <img src="./static/one_tier.svg">
+              <p class="starring">{{ rankers[0].username }}</p>                        
+            </li>
+          </router-link>
+          <router-link class="nav-username" :to="{ name: 'Profile', params: {username: rankers[1].username} }">
+            <li class="two d-flex" id="two">
+              <img src="./static/two_tier.svg">
+              <p class="starring">{{ rankers[1].username }}</p>            
+            </li>
+          </router-link>
+          <router-link class="nav-username" :to="{ name: 'Profile', params: {username: rankers[2].username} }">
+            <li class="three d-flex" id="three">
+              <img src="./static/three_tier.svg">
+              <p class="starring">{{ rankers[2].username }}</p>            
+            </li>
+          </router-link>
+          <router-link class="nav-username" :to="{ name: 'Profile', params: {username: rankers[3].username} }">
+            <li class="four d-flex" id="four">
+              <img src="./static/four_tier.svg">
+              <p class="starring">{{ rankers[3].username }}</p>            
+            </li>
+          </router-link>
+          <router-link class="nav-username" :to="{ name: 'Profile', params: {username: rankers[4].username} }">
+            <li class="five d-flex" id="five">
+              <img src="./static/five_tier.svg">
+              <p class="starring">{{ rankers[4].username }}</p>            
+            </li>
+          </router-link>
+          <router-link class="nav-username" :to="{ name: 'Profile', params: {username: rankers[5].username} }">
+            <li class="six d-flex" id="six">
+              <img src="./static/six_tier.svg">
+              <p class="starring">{{ rankers[5].username }}</p>            
+            </li>
+          </router-link>
+          <router-link class="nav-username" :to="{ name: 'Profile', params: {username: rankers[6].username} }">
+            <li class="seven d-flex" id="seven">
+              <img src="./static/seven_tier.svg">
+              <p class="starring">{{ rankers[6].username }}</p>            
+            </li>
+          </router-link>
+          <router-link class="nav-username" :to="{ name: 'Profile', params: {username: rankers[7].username} }">
+            <li class="eight d-flex" id="eight">
+              <img src="./static/eight_tier.svg">
+              <p class="starring">{{ rankers[7].username }}</p>            
+            </li>
+          </router-link>
+          <router-link class="nav-username" :to="{ name: 'Profile', params: {username: rankers[8].username} }">
+            <li class="nine d-flex" id="nine">
+              <img src="./static/nine_tier.svg">
+              <p class="starring">{{ rankers[8].username }}</p>            
+            </li>
+          </router-link>
+          <router-link class="nav-username" :to="{ name: 'Profile', params: {username: rankers[9].username} }">
+            <li class="ten d-flex" id="ten">
+              <img src="./static/ten_tier.svg">
+              <p class="starring">{{ rankers[9].username }}</p>            
+            </li>
+          </router-link>
         </ul>
       </div>
     </div>

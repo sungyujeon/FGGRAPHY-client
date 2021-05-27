@@ -25,14 +25,14 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
   .card-movie-title {
     text-decoration: none;
     color: black;
   }
 
   .card-movie-description {
-    margin-left: 18px;
+    margin-left: 23px;
     margin-bottom: 0px;
   }
 </style>

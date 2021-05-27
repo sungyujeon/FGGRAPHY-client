@@ -32,7 +32,7 @@ export default {
   }
 
   .card-movie-description {
-    margin-left: 35px;
+    margin-left: 23px;
     margin-bottom: 0px;
   }
 </style>

@@ -44,7 +44,8 @@ export default {
   },
   methods: {
     getJWT: function () {
-      this.$store.dispatch('getJWT', this.credential)      
+      this.$store.dispatch('getJWT', this.credential)
+      this.$store.dispatch('getUserTier', this.credential.username)               
       // $router는 django에서 redirect와 같은 동작을 한다
       // 안에들어가는 name은 router의 routes안의 name으로 이동하는 것
       this.$router.push({name: 'Home'})      

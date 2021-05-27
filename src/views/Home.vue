@@ -2,10 +2,10 @@
   <div class="container home mt-4">
     <div class="row">
       <div class="col-10">
-        <HomeLeft :rankers="rankers" :oneMovieList="oneMovieList" :twoMovieList="twoMovieList" :threeMovieList="threeMovieList"/>
+        <HomeLeft v-if="rankers.length && oneMovieList.length && twoMovieList.length && threeMovieList.length" :rankers="rankers" :oneMovieList="oneMovieList" :twoMovieList="twoMovieList" :threeMovieList="threeMovieList"/>
       </div>
       <div class="col-2">        
-        <HomeRight :rankers="rankers"/>
+        <HomeRight v-if="rankers.length" :rankers="rankers"/>
       </div>
     </div>
   </div>
@@ -32,7 +32,7 @@ export default {
     HomeLeft,
     HomeRight
   },
-  created: function () {
+  created: function () {    
     axios({
       method: 'get',
       url: `${SERVER_URL}/accounts/top-ranked/?user_num=10`,
@@ -97,6 +97,6 @@ export default {
             })            
           })
       })
-  }
+  },  
 }
 </script>
